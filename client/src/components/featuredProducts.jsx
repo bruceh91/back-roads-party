@@ -11,14 +11,14 @@ export default class Featured extends Component {
         }
     }
 
-    componentDidMount() {
-        console.log('attempt get')
-        fetch(`/api/products`)
-            .then((response) => response.json())
-            .then((responseJson) => {
-                this.setState({productsList: responseJson})
-            })
-    }
+    // componentDidMount() {                         //// add featured bool to db to find featured products
+    //     console.log('attempt get')
+    //     fetch(`/api/products`)
+    //         .then((response) => response.json())
+    //         .then((responseJson) => {
+    //             this.setState({productsList: responseJson})
+    //         })
+    // }
     
     render() {
         console.log(this.state.productsList)
