@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { render } from 'react-dom';
-// import Calender from 'react-calendar';     ////https://www.npmjs.com/package/react-calendar
-import Featured from './featuredProducts';
+import RentalsCatBar from './rentalsComps/rentalsCatBar';
+
 
 export default class Rentals extends Component {
 
@@ -9,8 +9,16 @@ export default class Rentals extends Component {
         super(props);
 
         this.state = {
-            productsList: []
+            productsList: [],
+            pName: 'name when clicked',
+            pDescription: 'description',
+            pQuant: 'quantity',
+            pSize: 'size',
+            pMax: 'max recommended',
+            date: ''
         }
+        this.handleDateChange = this.handleDateChange.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
@@ -22,32 +30,51 @@ export default class Rentals extends Component {
             })
     }
 
+    handleClick(index) {
+        this.setState({
+            pName: this.state.productsList[index].name,
+            pDescription: this.state.productsList[index].description,
+            pQuant: this.state.productsList[index].quantity,
+            pSize: `${this.state.productsList[index].width}x${this.state.productsList[index].length}`,
+            pMax: this.state.productsList[index].maxpeople
+        })
+    }
+
+    handleDateChange(event) {
+        this.setState({startDate: event.target.value});
+      }
+
     render() {
         return (
             <Fragment>
-                <h1>Rentals</h1>
+                <RentalsCatBar />
                 <div className='rentals-info-box' >
-                    <h2>info</h2>
-                    <h3>name when clicked</h3>
-                    <h4>description</h4>
-                    <h5>size</h5>
-                    <h5>quantity</h5>
+                    <h2 className='text-center' >{this.state.pName}</h2>
+                    <p className='text-center' >{this.state.pDescription}</p>
+                    <h5 className='text-center' >{this.state.pSize}</h5>
+                    <h5 className='text-center' >{this.state.pMax}</h5>
+                    <h5 className='text-center'>{this.state.pQuant}</h5>
                     <div className='calender-div'>
-                        {/* <Calender /> */}
                         <p>calendar here</p>
                     </div>
                 </div>
-                {this.state.productsList.map((x, index) => {
-                    return (
-                        <div className='rentals-head' key={index}>
-                            <img className='rentals-image' src={x.image} alt={x.name} height='250px' />
-                            <div className='rentals-text-div' >
-                                <h3 className='rentals-name' >{x.name}</h3>
-                                <h4 className='rentals-description' >{x.description}</h4>
+                <div className='rentals-container'>
+                    <div className='rentals-search-div'>
+                        <h5 className='rentals-search-text'>type date here to see available products (mm/dd/yyyy)</h5>
+                        <input className='rentals-input' type="text" value={this.state.Date} onChange={this.handleDateChange} placeholder={this.state.date} />
+                    </div>
+                    {this.state.productsList.map((x, index) => {
+                        return (
+                            <div className='rentals-head' onClick={() => this.handleClick(index)} key={index}>
+                                <img className='rentals-image' src={x.image} alt={x.name} height='250px' />
+                                <div className='rentals-text-div' >
+                                    <h3 className='rentals-name' >{x.name}</h3>
+                                    <h4 className='rentals-description' >{x.description}</h4>
+                                </div>
                             </div>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
+                </div>
 
             </Fragment>
         );

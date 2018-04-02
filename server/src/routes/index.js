@@ -4,17 +4,24 @@ import classesRouter from './classes';
 import authRouter from './auth';
 import usersRouter from './users';
 import productsRouter from './products'
+import featuredProductsRouter from './featuredProducts'
 import { isLoggedIn, tokenMiddleware } from '../middleware/auth.mw';
 
 let router = Router();
 
 router.use('/auth', authRouter);
-router.use('/products', productsRouter)
+router.use('/products', productsRouter);
+// router.use('/featuredProducts', featuredProductsRouter);
 
 router.route('*')
     .post(tokenMiddleware, isLoggedIn)
     .put(tokenMiddleware, isLoggedIn)
     .delete(tokenMiddleware, isLoggedIn);
+
+// router.use(tokenMiddleware);
+// router.use(isLoggedIn);
+
+router.use('/featuredProducts', featuredProductsRouter);
 
 router.use('/classes', classesRouter);
 router.use('/people', peopleRouter);

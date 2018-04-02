@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { render } from 'react-dom';
 
 export default class Featured extends Component {
@@ -7,23 +7,39 @@ export default class Featured extends Component {
         super(props);
 
         this.state = {
-            productsList: []
+            featuredProductsList: []
         }
     }
 
-    // componentDidMount() {                         //// add featured bool to db to find featured products
-    //     console.log('attempt get')
-    //     fetch(`/api/products`)
-    //         .then((response) => response.json())
-    //         .then((responseJson) => {
-    //             this.setState({productsList: responseJson})
-    //         })
-    // }
-    
+    componentDidMount() {
+        console.log('attempt featured get')
+        fetch(`/api/featuredProducts`)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({ featuredProductsList: responseJson })
+            })
+    }
+
     render() {
-        console.log(this.state.productsList)
         return (
-            <h1>featured products</h1>
+            <Fragment>
+                <h1>featured products</h1>
+                <div className='d-flex flex-wrap justify-content-around'>
+                {this.state.featuredProductsList.map((x, index) => {
+                    return (
+
+                        <div className="featured-card card" key={index}>
+                            <img className="card-img-top" src={x.image} alt={x.name} />
+                            <div className="card-body text-center">
+                                <h5 className="card-title">{x.name}</h5>
+                                <p className="card-text"><small>{x.description}</small></p>
+                                <a href="#" className="fp-button btn btn-primary center-block">More Info</a>
+                            </div>
+                        </div>
+                            )
+                })}
+                </div>
+            </Fragment>
         );
     }
 }
