@@ -28,9 +28,9 @@ export default class Featured extends Component {
                 {this.state.featuredProductsList.map((x, index) => {
                     return (
 
-                        <div className="featured-card card" key={index}>
+                        <div className="featured-card card mb-5" key={index}>
                             <img className="card-img-top" src={x.image} alt={x.name} />
-                            <div className="card-body text-center">
+                            <div className="card-body text-center g-mint">
                                 <h5 className="card-title">{x.name}</h5>
                                 <p className="card-text"><small>{x.description}</small></p>
                                 <a href="#" className="fp-button btn btn-primary center-block">More Info</a>

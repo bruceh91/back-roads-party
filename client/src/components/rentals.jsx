@@ -15,15 +15,18 @@ export default class Rentals extends Component {
             pQuant: 'quantity',
             pSize: 'size',
             pMax: 'max recommended',
-            date: ''
+            date: '',
+            search: ''
         }
         this.handleDateChange = this.handleDateChange.bind(this);
+        this.handleCatChange = this.handleCatChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
+        this.setState({search: 6});
         console.log('attempt get')
-        fetch(`/api/products`)
+        fetch(`/api/products/${this.state.search}`)
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({ productsList: responseJson })
@@ -41,19 +44,31 @@ export default class Rentals extends Component {
     }
 
     handleDateChange(event) {
-        this.setState({startDate: event.target.value});
-      }
+        this.setState({ date: event.target.value })
+    }
+
+    handleCatChange(num) {
+        console.log(num);
+        this.setState({search: num})
+        fetch(`/api/products/${this.state.search}`)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({ productsList: responseJson })
+            })
+            // .then(() => {this.forceUpdate()})
+        // this.forceUpdate();
+    }
 
     render() {
         return (
             <Fragment>
-                <RentalsCatBar />
-                <div className='rentals-info-box' >
-                    <h2 className='text-center' >{this.state.pName}</h2>
-                    <p className='text-center' >{this.state.pDescription}</p>
-                    <h5 className='text-center' >{this.state.pSize}</h5>
-                    <h5 className='text-center' >{this.state.pMax}</h5>
-                    <h5 className='text-center'>{this.state.pQuant}</h5>
+                <RentalsCatBar onCatChange={this.handleCatChange}/>
+                <div className='rentals-info-box g-mint g-grey-border' >
+                    <h2 className='text-center mt-2' >{this.state.pName}</h2>
+                    <p className='text-center m-1' ><big>{this.state.pDescription}</big></p>
+                    <h6 className='text-center m-1' >size: <small>{this.state.pSize}</small></h6>
+                    <h6 className='text-center m-1' >max people: <small>{this.state.pMax}</small></h6>
+                    <h6 className='text-center m-1'>number available: <small>{this.state.pQuant}</small></h6>
                     <div className='calender-div'>
                         <p>calendar here</p>
                     </div>
@@ -65,7 +80,7 @@ export default class Rentals extends Component {
                     </div>
                     {this.state.productsList.map((x, index) => {
                         return (
-                            <div className='rentals-head' onClick={() => this.handleClick(index)} key={index}>
+                            <div className='rentals-head g-mint' onClick={() => this.handleClick(index)} key={index}>
                                 <img className='rentals-image' src={x.image} alt={x.name} height='250px' />
                                 <div className='rentals-text-div' >
                                     <h3 className='rentals-name' >{x.name}</h3>

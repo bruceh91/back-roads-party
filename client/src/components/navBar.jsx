@@ -10,18 +10,22 @@ export default class NavBar extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-lg navBar-bg">
-                <a className="navbar-brand d-grey-t" href="/">Back Roads Party</a>
+            <nav className="navbar navbar-expand-lg g-orange navBar-bg">
+                <div className="navBar-logo-btn g-mint btn-lg mt-1">
+                    <img className='mt-2 mr-1' src="https://seeklogo.com/images/H/hand-logo-10C1271C98-seeklogo.com.png" height='30px' width='30px' alt='logo' />
+                    <a className="navbar-brand text-dark float-right mt-1" href="/">Back Roads Party</a>
+                </div>
                 <button className="navbar-toggler navBar-item" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse navBar-item" id="navbarNavAltMarkup" >
                     <div className="navbar-nav">
-                        <a className="nav-item nav-link d-grey-t active" href="/">Home <span className="sr-only">(current)</span></a>
-                        <a className="nav-item nav-link d-grey-t" href="/rentals">Rentals</a>
+                        <a className="nav-item nav-link btn text-dark g-mint ml-2" href="/">Home <span className="sr-only">(current)</span></a>  
+                                            {/* add hover and "active" color change  */}
+                        <a className="nav-item nav-link btn g-mint text-dark ml-1" href="/rentals">Rentals</a>
                     </div>
                 </div>
-                <a className="nav-item nav-link d-grey-t float-right" href="/eventPlanning">Plan your event</a>
+                <a className="nav-item nav-link text-dark float-right" href="/eventPlanning">Plan your event</a>
                 <AuthButton />
             </nav>
         );

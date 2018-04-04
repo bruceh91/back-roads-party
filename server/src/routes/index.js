@@ -10,17 +10,13 @@ import { isLoggedIn, tokenMiddleware } from '../middleware/auth.mw';
 let router = Router();
 
 router.use('/auth', authRouter);
-router.use('/products', productsRouter);
-// router.use('/featuredProducts', featuredProductsRouter);
 
 router.route('*')
     .post(tokenMiddleware, isLoggedIn)
     .put(tokenMiddleware, isLoggedIn)
     .delete(tokenMiddleware, isLoggedIn);
 
-// router.use(tokenMiddleware);
-// router.use(isLoggedIn);
-
+router.use('/products', productsRouter);
 router.use('/featuredProducts', featuredProductsRouter);
 
 router.use('/classes', classesRouter);
