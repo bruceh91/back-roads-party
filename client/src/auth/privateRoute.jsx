@@ -5,6 +5,7 @@ import { isLoggedIn } from '../services/user';
 const PrivateRoute = (props) => {
     const Component = props.component;
     const propsToPass = Object.assign({}, props);
+    console.log(props);
     delete propsToPass.component;
 
     return (

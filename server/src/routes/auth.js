@@ -11,7 +11,7 @@ router.post('/login', (req, res, next) => {
             console.log(err);
             return res.sendStatus(500);
         } else if (!token) {
-            console.log(info)
+            // console.log(info)
             return res.status(401).json(info);
         } else {
             return res.status(201).json(token);

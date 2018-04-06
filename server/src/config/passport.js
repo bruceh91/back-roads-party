@@ -21,10 +21,10 @@ function configurePassport(app) {
                     .find({ email })
                     .then(results => results[0])
                     .then(result => {
-                        console.log(result)
+                        // console.log(result)
                         if (result && result.hash) {
                             let userID = result.id;
-                            console.log(`b      ${userID}`);
+                            // console.log(`b      ${userID}`);
                             checkPassword(password, result.hash)
                                 .then(matches => {
                                     if (matches) {

@@ -12,6 +12,12 @@ import eventPlan from './eventPlan';
 import Goodbye from './goodbye';
 
 class Navigation extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: 'bababababababa'
+        }
+    }
 
     render() {
         return (
@@ -19,11 +25,12 @@ class Navigation extends Component {
                 <Fragment>
                     <NavBar />
                     <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route path="/rentals" component={Rentals} />
-                        <Route path="/eventPlanning" component={eventPlan} />
+                        <Route exact path="/" render={() => (<Home />)} />
+                        <Route path="/rentals" render={() => (<Rentals />)} />
+                        <Route path="/eventPlanning" render={() => (<EventPlan />)} />
                         <Route path="/login" component={Login} />
-                        <Route path="/logout" component={Logout} />
+                        <Route path="/logout" render={() => (<Logout />)} />
+                        <Route path="/details/:id" render={() => (<Details stuff={this.state.user} />)} />
                         <PrivateRoute path="/goodbye" component={Goodbye} />
                     </Switch>
                 </Fragment>
@@ -31,5 +38,6 @@ class Navigation extends Component {
         )
     }
 }
+
 
 export default Navigation;

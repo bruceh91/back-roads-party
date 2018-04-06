@@ -6,7 +6,7 @@ let router = Router();
 let productTable = new Table('products');
 
 router.get('/', (req, res) => {
-    console.log(req.user);
+    // console.log(req.user);
     productTable.getAll()
         .then((results) => {
             res.json(results);
@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
         .then((results) => {
             res.json(results);
         }).catch((err) => {
-            console.log(err);
+            // console.log(err);
             res.sendStatus(500);
         });
 });

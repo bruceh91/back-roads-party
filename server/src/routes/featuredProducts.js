@@ -6,7 +6,7 @@ let router = Router();
 let featuredProductsTable = new Table('products');
 
 router.get('/', (req, res) => {
-    console.log('get featured');
+    // console.log('get featured');
     let sql =
         `SELECT * FROM products
         WHERE featured IS NOT NULL

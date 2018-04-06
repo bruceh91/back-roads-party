@@ -5,7 +5,7 @@ let router = Router();
 let classTable = new Table('Classes');
 
 router.get('/', (req, res) => {
-    console.log(req.user);
+    // console.log(req.user);
     classTable.getAll()
     .then((results) => {
         res.json(results);

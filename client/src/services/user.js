@@ -1,4 +1,5 @@
 import * as baseService from './base';
+import { SSL_OP_PKCS1_CHECK_1 } from 'constants';
 
 let loggedIn = false;
 
@@ -35,7 +36,11 @@ function login(email, password) {
             .then((jsonResponse) => {
                 baseService.setAuthToken(jsonResponse.token);
                 loggedIn = true;
+            })
+            .then(() => {
+                return baseService.get(`/api/users/${email}`)
             });
+
         } else if (response.status === 401) {
             return response.json()
             .then((jsonResponse) => {
