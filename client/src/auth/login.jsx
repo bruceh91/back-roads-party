@@ -35,7 +35,7 @@ class Login extends Component {
         userService.login(this.state.email, this.state.password)
         .then((res) => {
             console.log(res);
-            this.setState({ redirectToReferrer: true });
+            // this.setState({ redirectToReferrer: true });
             this.setState({id: res.id})
         }).catch((err) => {
             if (err.message) {
@@ -53,7 +53,7 @@ class Login extends Component {
     }
 
     render() {
-    //    const { from } = this.props.location.state || { from: { pathname: '/' } };
+       const { from } = this.props.location.state || { from: { pathname: '/' } };
        const { redirectToReferrer, checkingLogin } = this.state;
 
        if (checkingLogin) {
@@ -61,7 +61,7 @@ class Login extends Component {
        }
        if (redirectToReferrer) {
            return (
-               <Redirect to={'/'} />    //<Redirect to={from} />
+               <Redirect to={from} />
            );
        }
 

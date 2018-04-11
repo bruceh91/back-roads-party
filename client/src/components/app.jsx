@@ -10,6 +10,7 @@ import NavBar from './navBar';
 import Rentals from './rentals';
 import eventPlan from './eventPlan';
 import Goodbye from './goodbye';
+import Test from './Test';
 
 class Navigation extends Component {
     constructor(props) {
@@ -31,6 +32,7 @@ class Navigation extends Component {
                         <Route path="/login" component={Login} />
                         <Route path="/logout" render={() => (<Logout />)} />
                         <Route path="/details/:id" render={() => (<Details stuff={this.state.user} />)} />
+                        <Route path="/test" component={Test} />
                         <PrivateRoute path="/goodbye" component={Goodbye} />
                     </Switch>
                 </Fragment>
