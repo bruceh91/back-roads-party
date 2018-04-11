@@ -6,3 +6,10 @@ export const selectUser = (user) => {
     }
 };
 
+export const hello = (id) => {
+    console.log('HELLO', id);
+    return {
+        type: "CURRENT_USER_ID",
+        payload: id
+    }
+}

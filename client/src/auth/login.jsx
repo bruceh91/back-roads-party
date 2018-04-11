@@ -1,7 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import * as userService from '../services/user';
 import { Redirect } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import IndeterminateProgress from '../utilities/indeterminateProgress';
+
+import { hello } from '../store/actions/actionIndex'
 
 class Login extends Component {
     constructor(props) {
@@ -36,7 +40,8 @@ class Login extends Component {
         .then((res) => {
             console.log(res);
             // this.setState({ redirectToReferrer: true });
-            this.setState({id: res.id})
+            // this.setState({id: res.id})
+            this.props.hello(res[0].id);
         }).catch((err) => {
             if (err.message) {
                 this.setState({ feedbackMessage: err.message });
@@ -82,9 +87,20 @@ class Login extends Component {
                     ): null}
                     <input type="submit" value="Login" className="btn btn-primary" />
                 </form>
+                <h1>x{this.props.currentUserID}</h1>
             </Fragment>
        );
     }
 }
 
-export default Login;
+function mapStateToProps(state) {
+    return {
+        currentUserID: state.currentUserID
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({hello: hello}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
