@@ -27,6 +27,16 @@ router.post('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
+    productTable.getOne(req.params.id)
+    .then((results) => {
+        res.json(results);
+    }).catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+    });
+});
+
+router.get('/category/:id', (req, res) => {
     let sql = `SELECT
                     products.name AS name,
                     products.description AS description,

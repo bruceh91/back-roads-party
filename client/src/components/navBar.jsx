@@ -23,11 +23,13 @@ export default class NavBar extends Component {
                         <a className="nav-item nav-link btn text-dark g-mint ml-2" href="/">Home <span className="sr-only">(current)</span></a>  
                                             {/* add hover and "active" color change  */}
                         <a className="nav-item nav-link btn g-mint text-dark ml-1" href="/rentals">Rentals</a>
-                        <a className="nav-item nav-link btn g-mint text-dark ml-1" href="/goodbye">Goodbye</a>
+                        <a className="nav-item nav-link btn g-mint text-dark ml-1" href="/faq">FAQ</a>
+                        <a className="nav-item nav-link btn g-mint text-dark ml-1" href="/contact">Contact</a>
+                        {/* <a className="nav-item nav-link btn g-mint text-dark ml-1" href="/goodbye">Goodbye</a> */}
                     </div>
                 </div>
-                <a className="nav-item nav-link text-dark float-right" href="/eventPlanning">Plan your event</a>
-                <AuthButton />
+                {/* <a className="nav-item nav-link text-dark float-right" href="/eventPlanning">Plan your event</a> */}
+                {/* <AuthButton /> */}
             </nav>
         );
     }

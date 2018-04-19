@@ -10,13 +10,47 @@ import NavBar from './navBar';
 import Rentals from './rentals';
 import eventPlan from './eventPlan';
 import Goodbye from './goodbye';
+import Details from './details';
+import Faq from './faq';
+import Contact from './contact';
 import Test from './Test';
 
 class Navigation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: 'bababababababa'
+            loggedIn: false
+        }
+    }
+
+    routes() {
+        if (this.state.loggedIn === false) {
+            return (
+                <div>
+                    <NavBar />
+                    <Switch>
+                        <Route exact path="/" component={Home} />
+                        <Route path="/rentals" component={Rentals} />
+                        {/* <Route path="/eventPlanning" render={() => (<EventPlan />)} /> */}
+                        <Route path="/login" component={Login} />
+                        <Route path="/logout" component={Logout} />
+                        <Route path="/details/:id" component={Details} />
+                        <Route path="/test" component={Test} />
+                        <Route path="/faq" component={Faq} />
+                        <Route path="/contact" component={Contact} />
+                        {/* <PrivateRoute path="/goodbye" component={Goodbye} /> */}
+                    </Switch>
+                </div>
+            )
+        } else if (this.state.loggedIn === true) {
+            return (
+                <div>
+                    <NavBar />
+                    <Switch>
+                        <Route exact path="/" component={Rentals} />
+                    </Switch>
+                </div>
+            )
         }
     }
 
@@ -24,17 +58,7 @@ class Navigation extends Component {
         return (
             <Router>
                 <Fragment>
-                    <NavBar />
-                    <Switch>
-                        <Route exact path="/" render={() => (<Home />)} />
-                        <Route path="/rentals" render={() => (<Rentals />)} />
-                        <Route path="/eventPlanning" render={() => (<EventPlan />)} />
-                        <Route path="/login" component={Login} />
-                        <Route path="/logout" render={() => (<Logout />)} />
-                        <Route path="/details/:id" render={() => (<Details stuff={this.state.user} />)} />
-                        <Route path="/test" component={Test} />
-                        <PrivateRoute path="/goodbye" component={Goodbye} />
-                    </Switch>
+                    {this.routes()}
                 </Fragment>
             </Router>
         )
