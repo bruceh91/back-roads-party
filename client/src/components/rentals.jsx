@@ -55,7 +55,7 @@ export default class Rentals extends Component {
         let date = event.target.value;
         let dateObject = new Date(date);         //   'Tue Oct 08 1991 00:00:00 GMT-0500 (CDT)';
         this.setState({ newDate: dateObject, dateVal: date });
-        console.log(dateObject);
+        // console.log(dateObject);
     }
 
     handleCatChange(num) {
@@ -83,7 +83,7 @@ export default class Rentals extends Component {
                     <h6 className='text-center m-1' >size: <small>{this.state.pSize}</small></h6>
                     <h6 className='text-center m-1' >max people: <small>{this.state.pMax}</small></h6>
                     <h6 className='text-center m-1'>number available: <small>{this.state.pQuant}</small></h6>
-                    <Calender dateSelected={this.state.date} />        
+                    <Calender dateSelected={this.state.date} prodId={this.state.pID} />        
                     <p>{this.state.pID}</p>
                     <Link to={`/details/${this.state.pID}`} >more details</Link>
                 </div>

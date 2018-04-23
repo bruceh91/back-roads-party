@@ -255,3 +255,13 @@
   background: #2875C7;
   color: #FFFFFF;
 }
+
+.calendar .day.rented {
+  background: yellow;
+  color: #FFFFFF;
+}
+
+.day.rented.selected {
+  background: red;
+  color: #FFFFFF;
+}

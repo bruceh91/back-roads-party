@@ -4,6 +4,7 @@ import Table from '../table';
 
 let router = Router();
 let productTable = new Table('products');
+let datesTable = new Table('dates_rented')
 
 router.get('/', (req, res) => {
     // console.log(req.user);
@@ -58,6 +59,28 @@ router.get('/category/:id', (req, res) => {
             console.log(err);
             res.sendStatus(500);
         });
+});
+
+router.get('/dates/:id', (req, res) => {
+    // datesTable.getOne(req.params.id)
+    // .then((results) => {
+    //     res.json(results);
+    //     console.log(results);
+    // }).catch((err) => {
+    //     console.log(err);
+    //     res.sendStatus(500);
+    // });
+
+    let sql = `SELECT * FROM dates_rented WHERE dates_rented.product_id = ${req.params.id};`
+    executeQuery(sql)
+        .then((results) => {
+            res.json(results);
+            console.log(results);
+        }).catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+        });
+
 });
 
 router.put('/:id', (req, res) => {
