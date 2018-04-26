@@ -208,9 +208,9 @@
   justify-content: center;
   align-items: center;
 }
-.calendar header .arrow:hover {
+/* .calendar header .arrow:hover {
   background: #1f5c9d;
-}
+} */
 .calendar .week {
   border-top: solid 1px #CCCCCC;
 }
@@ -226,9 +226,9 @@
 .calendar .day-names .day {
   cursor: default;
 }
-.calendar .day-names .day:hover {
+/* .calendar .day-names .day:hover {
   background: inherit;
-}
+} */
 .calendar .day {
   display: flex;
   justify-content: center;
@@ -239,9 +239,9 @@
   cursor: pointer;
   transition: all .2s;
 }
-.calendar .day:hover {
+/* .calendar .day:hover {
   background: #EFEFEF;
-}
+} */
 .calendar .day:first-child {
   border-left: none;
 }
@@ -249,7 +249,7 @@
   background: #dceaf8;
 }
 .calendar .day.different-month {
-  color: #C0C0C0;
+  color: white;
 }
 .calendar .day.selected {
   background: #2875C7;
@@ -257,11 +257,31 @@
 }
 
 .calendar .day.rented {
-  background: yellow;
+  background: #dae038;
   color: #FFFFFF;
 }
 
 .day.rented.selected {
+  background: orange;
+  color: #FFFFFF;
+}
+
+.day.rented.soldOut.selected {
   background: red;
   color: #FFFFFF;
+}
+
+.day.rented.soldOut {
+    background: red;
+    color: #FFFFFF;
+}
+
+.day.rented.different-month{
+    background: white;
+    color: white;
+}
+
+.day.rented.soldOut.different-month {
+    background: white;
+    color: white;
 }

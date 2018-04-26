@@ -17,27 +17,26 @@ export default class Rentals extends Component {
             pDescription: 'description',
             pQuant: 'quantity',
             pSize: 'size',
-            pMax: 'max recommended',
+            rentedQuan: 'yo',
             date: new Date(),
             newDate: new Date(),
             dateVal: '',
-            search: 6,
-            // selected: false
+            search: 6
+
         }
         this.handleDateChange = this.handleDateChange.bind(this);
         this.handleCatChange = this.handleCatChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
-        // this.setDate = this.setDate.bind(this);
     }
 
     componentDidMount() {
-        // this.setState({search: 6});
         console.log('attempt get')
         fetch(`/api/products/category/${this.state.search}`)
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({ productsList: responseJson })
-            })
+            });
+
     }
 
     handleClick(index) {
@@ -46,16 +45,14 @@ export default class Rentals extends Component {
             pName: this.state.productsList[index].name,
             pDescription: this.state.productsList[index].description,
             pQuant: this.state.productsList[index].quantity,
-            pSize: `${this.state.productsList[index].width}x${this.state.productsList[index].length}`,
-            pMax: this.state.productsList[index].maxpeople
+            pSize: `${this.state.productsList[index].width}x${this.state.productsList[index].length}`
         })
     }
 
     handleDateChange(event) {
         let date = event.target.value;
-        let dateObject = new Date(date);         //   'Tue Oct 08 1991 00:00:00 GMT-0500 (CDT)';
+        let dateObject = new Date(date);
         this.setState({ newDate: dateObject, dateVal: date });
-        // console.log(dateObject);
     }
 
     handleCatChange(num) {
@@ -69,8 +66,14 @@ export default class Rentals extends Component {
     }
 
     handleButtonClick() {
-        // console.log('yo', this.state.selected);
         this.setState({ date: this.state.newDate });
+    }
+
+    getRentedQuan(quant) {
+        if (quant != this.state.rentedQuan) {
+            this.setState({ rentedQuant: quant });
+            console.log(quant + '  new');
+        }
     }
 
     render() {
@@ -81,10 +84,7 @@ export default class Rentals extends Component {
                     <h2 className='text-center mt-2' >{this.state.pName}</h2>
                     <p className='text-center m-1' ><big>{this.state.pDescription}</big></p>
                     <h6 className='text-center m-1' >size: <small>{this.state.pSize}</small></h6>
-                    <h6 className='text-center m-1' >max people: <small>{this.state.pMax}</small></h6>
-                    <h6 className='text-center m-1'>number available: <small>{this.state.pQuant}</small></h6>
-                    <Calender dateSelected={this.state.date} prodId={this.state.pID} />        
-                    <p>{this.state.pID}</p>
+                    <Calender sendQuan={() => this.getRentedQuan()} dateSelected={this.state.date} prodId={this.state.pID} prodQuan={this.state.pQuant} />
                     <Link to={`/details/${this.state.pID}`} >more details</Link>
                 </div>
                 <div className='rentals-container'>
@@ -94,7 +94,7 @@ export default class Rentals extends Component {
                         <button onClick={() => this.handleButtonClick()} >set date</button>
                     </div>
                     {this.state.productsList.map((x, index) => {
-                        return (
+                        return  (
                             <div className='rentals-head g-mint' onClick={() => this.handleClick(index)} key={index}>
                                 <img className='rentals-image' src={x.image} alt={x.name} height='250px' />
                                 <div className='rentals-text-div' >
@@ -105,7 +105,6 @@ export default class Rentals extends Component {
                         )
                     })}
                 </div>
-
             </Fragment>
         );
     }
