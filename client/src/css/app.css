@@ -43,6 +43,14 @@
     width: 17%;
 }
 
+.nav-item:hover {
+    background-color: blue;
+}
+
+.nav-active {
+    background-color: cornflowerblue;
+}
+
 
 /*                home screen                  */
 

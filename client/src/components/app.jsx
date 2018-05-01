@@ -14,6 +14,7 @@ import Details from './details';
 import Faq from './faq';
 import Contact from './contact';
 import Test from './Test';
+import AHome from './admin/Ahome'; 
 
 class Navigation extends Component {
     constructor(props) {
@@ -39,6 +40,7 @@ class Navigation extends Component {
                         <Route path="/faq" component={Faq} />
                         <Route path="/contact" component={Contact} />
                         {/* <PrivateRoute path="/goodbye" component={Goodbye} /> */}
+                        <Route path="/admin/home" component={AHome} />
                     </Switch>
                 </div>
             )

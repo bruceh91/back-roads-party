@@ -40,7 +40,7 @@ export default class Calendar extends Component {
             totalArr.push(x.total_number)
           })
           this.setState({ rentedDayArr: resArr, rentedNumArr: numArr, rentedTotal: totalArr[1] });
-          console.log('numRented  ' + numArr[resArr.indexOf(moment(this.props.dateSelected).date())]);
+          // console.log('numRented  ' + numArr[resArr.indexOf(moment(this.props.dateSelected).date())]);
 
           function countInArray(array, what) {
             var count = 0;
@@ -54,7 +54,7 @@ export default class Calendar extends Component {
 
           let numCount = countInArray(resArr, moment(this.props.dateSelected).date())
 
-          console.log(numCount + '  numCount');
+          // console.log(numCount + '  numCount');
 
           function show(x) {
             let answer = 0
@@ -64,14 +64,14 @@ export default class Calendar extends Component {
               temp = resArr.indexOf(moment(x).date(), temp + 1);
             }
 
-            console.log('answer ' + answer)
+            // console.log('answer ' + answer)
 
 
             return answer
           }
 
           this.setState({ quantRented: show(this.props.dateSelected) })
-          console.log('state' + this.state.quantRented);
+          // console.log('state' + this.state.quantRented);
         }
         )
     }
