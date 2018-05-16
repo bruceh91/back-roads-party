@@ -14,7 +14,12 @@ import Details from './details';
 import Faq from './faq';
 import Contact from './contact';
 import Test from './Test';
-import AHome from './admin/Ahome'; 
+import AHome from './admin/adminHome'; 
+import AddProduct from './admin/adminAddProduct';
+import UpdateProducts from './admin/adminUpdateProducts';
+import ChangeFAQ from './admin/adminChangeFaq';
+import AddRental from './admin/adminAddRental';
+// import AddRental from './admin/adminAddRental';
 
 class Navigation extends Component {
     constructor(props) {
@@ -40,7 +45,14 @@ class Navigation extends Component {
                         <Route path="/faq" component={Faq} />
                         <Route path="/contact" component={Contact} />
                         {/* <PrivateRoute path="/goodbye" component={Goodbye} /> */}
-                        <Route path="/admin/home" component={AHome} />
+
+                            {/*    Admin section    */}
+
+                        <Route path="/adminhome" component={AHome} />
+                        <Route path="/adminaddrental" component={AddRental} />
+                        <Route path="/adminaddproduct" component={AddProduct} />
+                        <Route path="/adminupdateproducts" component={UpdateProducts} />
+                        <Route path="/adminchangefaq" component={ChangeFAQ} />
                     </Switch>
                 </div>
             )

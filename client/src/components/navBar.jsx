@@ -13,17 +13,15 @@ export default class NavBar extends Component {
     }
 
     componentDidMount() {
-        let stuff = location.href.split('/');
-        let otherStuff = stuff[stuff.length - 1];
-        if ( otherStuff != '') {
-        this.setState({ active: otherStuff });
-        console.log("that" + otherStuff + stuff);
+        let url = location.href.split('/');
+        let urlEnd = url[url.length - 1];
+        if ( urlEnd != '') {
+        this.setState({ active: urlEnd });
         }
-        console.log('wow');
     }
 
     render() {
-        console.log("this" + this.state.active)
+        // console.log("this" + this.state.active)
         return (
             <nav className="navbar navbar-expand-lg g-orange navBar-bg">
                 <div className="navBar-logo-btn g-mint btn-lg mt-1">

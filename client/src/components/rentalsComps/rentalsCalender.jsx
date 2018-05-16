@@ -33,7 +33,7 @@ export default class Calendar extends Component {
           let numArr = [0];
           let totalArr = [0];
           responseJson.map((x) => {
-            if (moment(x.date_rented).year() == moment(this.state.month).year() && moment(x.date_rented).month() == moment(this.state.month).month()) {
+            if (moment(new Date(x.date_rented)).year() == moment(this.state.month).year() && moment(new Date (x.date_rented)).month() == moment(this.state.month).month()) {
               resArr.push(moment(x.date_rented).date());
               numArr.push(x.number_rented);
             }
