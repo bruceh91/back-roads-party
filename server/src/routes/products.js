@@ -62,15 +62,6 @@ router.get('/category/:id', (req, res) => {
 });
 
 router.get('/dates/:id', (req, res) => {
-    // datesTable.getOne(req.params.id)
-    // .then((results) => {
-    //     res.json(results);
-    //     console.log(results);
-    // }).catch((err) => {
-    //     console.log(err);
-    //     res.sendStatus(500);
-    // });
-
     let sql = `SELECT * FROM dates_rented WHERE dates_rented.product_id = ${req.params.id};`
     executeQuery(sql)
         .then((results) => {
@@ -84,7 +75,13 @@ router.get('/dates/:id', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-    productTable.update(req.params.id, req.body)
+    let sql = `
+    UPDATE
+        products
+    SET ${req.body.column} = "${req.body.value}"
+    WHERE id = ${req.params.id};`;
+    console.log(req.body)
+    executeQuery(sql)
         .then((results) => {
             res.json(results);
         }).catch((err) => {

@@ -19,6 +19,7 @@ import AddProduct from './admin/adminAddProduct';
 import UpdateProducts from './admin/adminUpdateProducts';
 import ChangeFAQ from './admin/adminChangeFaq';
 import AddRental from './admin/adminAddRental';
+import UpdateProduct from './admin/adminUpdateProduct';
 // import AddRental from './admin/adminAddRental';
 
 class Navigation extends Component {
@@ -53,6 +54,7 @@ class Navigation extends Component {
                         <Route path="/adminaddproduct" component={AddProduct} />
                         <Route path="/adminupdateproducts" component={UpdateProducts} />
                         <Route path="/adminchangefaq" component={ChangeFAQ} />
+                        <Route path="/adminproduct/:id" component={UpdateProduct} />
                     </Switch>
                 </div>
             )

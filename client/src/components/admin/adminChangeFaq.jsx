@@ -86,7 +86,7 @@ class ChangeFAQ extends Component {
     render() {
         return (
             <Fragment>
-                <div>
+                {/* <div>
                     <div className='pt-5'>
                         <h1 className='pt-5'>current rules and policies</h1>
                         <ol className='pt-5'>
@@ -108,7 +108,7 @@ class ChangeFAQ extends Component {
                         </ul>
                         <br />
                     </div>
-                </div>
+                </div> */}
 
                 <div>
                     <hr />
@@ -117,7 +117,7 @@ class ChangeFAQ extends Component {
 
                 <div>
                     <div>
-                        <h3> new rules and policies</h3>
+                        <h3>rules and policies</h3>
                         <ol>
                             {this.state.rulesList.map((x, index) => {
                                 return (
@@ -140,7 +140,7 @@ class ChangeFAQ extends Component {
                         </ol>
                     </div>
                     <div>
-                        <h3> new frequently asked questions</h3>
+                        <h3> frequently asked questions</h3>
                         <ul>
                             {this.state.faqList.map((x, index) => {
                                 return (
