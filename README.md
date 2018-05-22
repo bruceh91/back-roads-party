@@ -9,6 +9,7 @@
 - Admin side
     + ~~login~~
     + adding/changing photos
-    + adding/changing products
-    + adding/changing rules & policies
-    + adding/changing faqs
+    + ~~adding/changing products~~
+    + ~~adding/changing rules & policies~~
+    + ~~adding/changing faqs~~
+    + adding rental page

@@ -45,7 +45,9 @@ router.get('/category/:id', (req, res) => {
                     products.length AS length,
                     products.width AS width,
                     products.maxpeople AS maxpeople,
+                    products.height AS height,
                     products.image AS image,
+                    products.price AS price,
                     categories.category AS category,
                     products.id AS id
                 FROM categories
