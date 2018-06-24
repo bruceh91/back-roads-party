@@ -6,7 +6,12 @@ import usersRouter from './users';
 import productsRouter from './products';
 import featuredProductsRouter from './featuredProducts';
 import rulesRouter from './rules-faq';
+import ordersRouter from './orders';
+import categoryRouter from './categories'; 
+import picturesRouter from './pictures';
+
 import { isLoggedIn, tokenMiddleware } from '../middleware/auth.mw';
+
 
 let router = Router();
 
@@ -21,6 +26,9 @@ router.route('*')
 router.use('/products', productsRouter);
 router.use('/featuredProducts', featuredProductsRouter);
 router.use('/policy', rulesRouter);
+router.use('/order', ordersRouter);
+router.use('/category', categoryRouter);
+router.use('/pictures', picturesRouter);
 
 router.use('/classes', classesRouter);
 router.use('/people', peopleRouter);

@@ -4,37 +4,8 @@ import Table from '../table';
 
 let router = Router();
 let productTable = new Table('products');
-// let datesTable = new Table('dates_rented');
+let datesTable = new Table('dates_rented')
 
-router.get('/', (req, res) => {
-    let sql = `SELECT
-                    *
-                FROM 
-                    products
-                WHERE venue IS NULL;`
-    executeQuery(sql)
-        .then((results) => {
-            res.json(results);
-        }).catch((err) => {
-            console.log(err);
-            res.sendStatus(500);
-        });
-});
-
-router.get('/venues', (req, res) => {
-    let sql = `SELECT
-                    *
-                FROM 
-                    products
-                WHERE venue IS NOT NULL;`
-    executeQuery(sql)
-        .then((results) => {
-            res.json(results);
-        }).catch((err) => {
-            console.log(err);
-            res.sendStatus(500);
-        });
-});
 
 router.post('/', (req, res) => {
     productTable.insert(req.body)
@@ -46,15 +17,6 @@ router.post('/', (req, res) => {
         });
 });
 
-router.get('/:id', (req, res) => {
-    productTable.getOne(req.params.id)
-    .then((results) => {
-        res.json(results);
-    }).catch((err) => {
-        console.log(err);
-        res.sendStatus(500);
-    });
-});
 
 router.get('/category/:id', (req, res) => {
     let sql = `SELECT
@@ -72,8 +34,7 @@ router.get('/category/:id', (req, res) => {
                 FROM categories
 	                JOIN prod_cat_REF ON prod_cat_REF.catID = categories.id
 	                JOIN products ON products.id = prod_cat_REF.prodID
-                WHERE prod_cat_REF.catID = ${req.params.id}
-                AND venue IS NULL;`
+                WHERE prod_cat_REF.catID = ${req.params.id};`
     executeQuery(sql)
         .then((results) => {
             res.json(results);
@@ -114,20 +75,6 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     productTable.delete(req.params.id)
-        .then((results) => {
-            res.json(results);
-        }).catch((err) => {
-            console.log(err);
-            res.sendStatus(500);
-        });
-});
-
-router.get('/cat/id', (req, res) => {
-    let sql = `SELECT
-                    MAX(id) AS id
-                FROM products;`
-                console.log(sql)
-    executeQuery(sql)
         .then((results) => {
             res.json(results);
         }).catch((err) => {

@@ -26,6 +26,7 @@ export default class Featured extends Component {
                 <h1>featured products</h1>
                 <div className='d-flex flex-wrap justify-content-around'>
                 {this.state.featuredProductsList.map((x, index) => {
+                    let url = `/details/${x.id}`
                     return (
 
                         <div className="featured-card card mb-5" key={index}>
@@ -33,7 +34,7 @@ export default class Featured extends Component {
                             <div className="card-body text-center g-mint">
                                 <h5 className="card-title">{x.name}</h5>
                                 <p className="card-text"><small>{x.description}</small></p>
-                                <a href="#" className="fp-button btn btn-primary center-block">More Info</a>
+                                <a href={url} className="fp-button btn btn-primary center-block">More Info</a>
                             </div>
                         </div>
                             )

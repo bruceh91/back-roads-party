@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import UpdatePhotos from './updatePhotos'
 import { render } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { put } from '../../services/base';
@@ -10,17 +11,25 @@ class UpdateProduct extends Component {
         super(props);
 
         this.state = {
-            product: {}
+            product: {},
+            pictureList: []
         }
     }
 
 
     componentDidMount() {
+        console.log(`process stuff    ${JSON.stringify(process.env)}, ${process.env.AWS_BUCKET}`)
         console.log('attempt get')
         fetch(`/api/products/${this.props.match.params.id}`)
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({ product: responseJson })
+            });
+
+        fetch(`/api/pictures/${this.props.match.params.id}`)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({ pictureList: responseJson })
             });
 
     }
@@ -36,19 +45,124 @@ class UpdateProduct extends Component {
                 column: columnName,
                 value: newValue
             })
-            })
+        })
             .then((response) => response.json())
             .then((responseJson) => {
                 console.log(responseJson);
-        });
+                console.log("PUT handled")
+            });
 
         alert(`the item's "${columnName}" value has been updated to "${newValue}"`);
 
         window.location.reload();
     }
 
+    handleImageChange(colName, pictureID, ref_id) {
+        console.log(`colname   ==  ${colName}`);
+        console.log(`file   ===    ${file}`);
+
+        const BucketName = 'back-roads-party';
+        const bucketRegion = 'us-east-2';
+        const IdentityPoolId = process.env.AWS_POOL_ID;
+        AWS.config.update({
+            region: bucketRegion,
+            credentials: new AWS.CognitoIdentityCredentials({
+                IdentityPoolId: IdentityPoolId
+            })
+        });
+        const s3 = new AWS.S3({
+            apiVersion: '2006-03-01',
+            params: { Bucket: BucketName }
+        });
+        
+        let albumName = 'products'
+        
+        // one photo
+        let files = document.getElementById(pictureID).files;
+        if (!files.length) {
+            return alert('Please choose a file to upload first.');
+        }
+        let file = files[0];
+        let ext = file.name.substr(file.name.lastIndexOf('.') + 1);
+        let fileName = `${Date.now()}${Math.floor((Math.random() * 1000))}.${ext}`;
+        let albumPhotosKey = encodeURIComponent(albumName) + '/';
+        let photoKey = albumPhotosKey + fileName;
+        
+        s3.upload({
+            Key: photoKey,
+            Body: file,
+            ACL: 'public-read',
+            ContentType: `image/${ext}`
+        }, function (err, data) {
+            if (err) {
+                return alert('There was an error uploading your photo: ' + err.message);
+            }
+            console.log('success with one photo')
+            alert('Successfully uploaded main photo.');
+            window.location.reload();
+        });
+
+
+
+
+
+
+        if ( colName == 'image' ) {
+        fetch(`/api/products/${this.props.match.params.id}`, {
+            method: 'PUT',
+            headers: new Headers({
+                "content-type": "application/json"
+            }),
+            body: JSON.stringify({
+                column: colName,
+                value: 'https://s3.us-east-2.amazonaws.com/back-roads-party/products/' + fileName
+            })
+        })
+            .then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson);
+                console.log("PUT handled")
+            });
+        } else if (colName == "pic_url") {
+            fetch(`/api/pictures`, {
+                method: 'PUT',
+                headers: new Headers({
+                    "content-type": "application/json"
+                }),
+                body: JSON.stringify({
+                    column: colName,
+                    value: 'https://s3.us-east-2.amazonaws.com/back-roads-party/products/' + fileName,
+                    ref_id
+                })
+            })
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    console.log(responseJson);
+                    console.log("PUT handled")
+                });
+        } else {
+            fetch(`/api/pictures`, {
+                method: 'POST',
+                headers: new Headers({
+                    "content-type": "application/json"
+                }),
+                body: JSON.stringify({
+                    product_id: ref_id,
+                    pic_url: 'https://s3.us-east-2.amazonaws.com/back-roads-party/products/' + fileName,
+                    
+                })
+            })
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    console.log(responseJson);
+                    console.log("PUT handled")
+                });
+        }
+        
+    }
+
+
     render() {
-        // console.log(this.props)
         return (
             <Fragment>
                 <div className="pt-5" >
@@ -101,7 +215,37 @@ class UpdateProduct extends Component {
                             <button onClick={() => this.handleClick("maxpeople", document.getElementById("maxpeople").value)}>update</button>
                             <hr />
 
-                            <img src={this.state.product.image} alt={this.state.product.name} height='150px' />
+
+                            {/* <UpdatePhotos prodID={this.state.product.id} mainImage={this.state.product.image} /> */}
+
+                            <h4>main image</h4>
+                            <img src={this.state.product.image} alt="main-photo" height='150px' />
+                            <h6>change image</h6>
+                            <input id="new-main-image" type="file" />
+                            <button onClick={() => this.handleImageChange("image", "new-main-image")}>update</button> 
+                            <br/>
+                            <br/>
+
+                            {this.state.pictureList.map((x, index) => {
+                                let id = x.id
+                                let inputID = `new-image-${id}`
+                                return (
+                                    <div key={index}>
+                                        <img src={x.pic_url} alt="image" height='150px' />
+                                        <h6>change image</h6>
+                                        <input id={inputID} type="file" />
+                                        <button onClick={() => this.handleImageChange("pic_url", inputID, id)}>update</button> <br/>
+                                        <br/>
+                                    </div>
+                                )
+                            })
+
+                            }
+                            <h4>add new secondary image</h4>
+                            <input id="new-secondary-image" type="file" />
+                            <button onClick={() => this.handleImageChange("secondary", "new-secondary-image", this.state.product.id)}>update</button> 
+                      
+
                         </div>
                     </h1>
 
@@ -109,6 +253,6 @@ class UpdateProduct extends Component {
             </Fragment>
         )
     }
-}
+    }
 
 export default UpdateProduct;

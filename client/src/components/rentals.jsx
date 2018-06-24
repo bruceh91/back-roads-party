@@ -58,7 +58,7 @@ export default class Rentals extends Component {
     handleCatChange(num) {
         console.log(num);
         this.setState({ search: num })
-        fetch(`/api/products/category/${this.state.search}`)
+        fetch(`/api/products/category/${num}`)
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({ productsList: responseJson })
@@ -84,7 +84,7 @@ export default class Rentals extends Component {
                     <h2 className='text-center mt-2' >{this.state.pName}</h2>
                     <p className='text-center m-1' ><big>{this.state.pDescription}</big></p>
                     <h6 className='text-center m-1' >size: <small>{this.state.pSize}</small></h6>
-                    <Calender sendQuan={() => this.getRentedQuan()} dateSelected={this.state.date} prodId={this.state.pID} prodQuan={this.state.pQuant} />
+                    {/* <Calender sendQuan={() => this.getRentedQuan()} dateSelected={this.state.date} prodId={this.state.pID} prodQuan={this.state.pQuant} /> */}
                     <Link to={`/details/${this.state.pID}`} >more details</Link>
                 </div>
                 <div className='rentals-container'>

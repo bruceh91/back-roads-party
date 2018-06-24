@@ -8,7 +8,8 @@ class Details extends Component {
 
         this.state = {
             prodID: this.props.match.params.id,
-            productData: []
+            productData: [],
+            pictureList: []
         }
     }
 
@@ -19,12 +20,19 @@ class Details extends Component {
             .then((responseJson) => {
                 this.setState({ productData: responseJson })
             })
+
+        fetch(`/api/pictures/${this.state.prodID}`)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({ pictureList: responseJson })
+            })
     }
 
     render() {
+        let image = this.state.productData.image;
         return (
             <Fragment>
-                <h1>Goodbye! World!</h1>
+                <h1>details page</h1>
                 <br />
                 <p>{this.state.productData.name}</p>
                 <p>{this.state.productData.description}</p>
@@ -32,7 +40,19 @@ class Details extends Component {
                 <p>{this.state.productData.length}</p>
                 <p>{this.state.productData.width}</p>
                 <p>{this.state.productData.maxpeople}</p>
+                <img src={image} alt="main-image"/>
+                {console.log(this.state.pictureList)}
+                {this.state.pictureList.map((x, index) => {
+                    return (
+                        <div key={index}>
+                            <h5>id = {x.id}</h5>
+                            <h5>product_id = {x.product_id}</h5>
+                            <img src={x.pic_url} alt="other photo"/>
+                        </div>
+                    )
+                })}
             </Fragment>
+            
         )
     }
 }

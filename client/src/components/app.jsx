@@ -20,6 +20,7 @@ import UpdateProducts from './admin/adminUpdateProducts';
 import ChangeFAQ from './admin/adminChangeFaq';
 import AddRental from './admin/adminAddRental';
 import UpdateProduct from './admin/adminUpdateProduct';
+import Venues from './venues';
 // import AddRental from './admin/adminAddRental';
 
 class Navigation extends Component {
@@ -45,6 +46,7 @@ class Navigation extends Component {
                         <Route path="/test" component={Test} />
                         <Route path="/faq" component={Faq} />
                         <Route path="/contact" component={Contact} />
+                        <Route path="/venues" component={Venues} /> 
                         {/* <PrivateRoute path="/goodbye" component={Goodbye} /> */}
 
                             {/*    Admin section    */}

@@ -6,16 +6,17 @@
   "scripts": {
     "build:client": "webpack",
     "build:server": "babel ./server/src -d ./server/lib",
-    "dev": "concurrently -k \"npm run watch:client\" \"npm run watch:server\" \"nodemon --watch server/lib --delay 1\"",
+    "dev": "source ENV_VAR && concurrently -k \"npm run watch:client\" \"npm run watch:server\" \"nodemon --watch server/lib --delay 1\"",
     "prepare": "npm run build:server",
     "start": "npm run build:client && npm run build:server && npm run start:server",
     "start:server": "node server/lib/index.js",
     "watch:client": "webpack --watch",
     "watch:server": "babel ./server/src -w -d ./server/lib"
   },
-  "author": "Covalence",
+  "author": "Bruce Harris",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.251.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
@@ -27,6 +28,7 @@
     "moment": "^2.22.1",
     "morgan": "^1.9.0",
     "mysql": "^2.15.0",
+    "npm": "^6.1.0",
     "passport": "^0.4.0",
     "passport-http-bearer": "^1.0.1",
     "passport-local": "^1.0.0",

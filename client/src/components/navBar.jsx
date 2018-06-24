@@ -35,6 +35,7 @@ export default class NavBar extends Component {
                     <div className="navbar-nav">
                         <a className={ "nav-item nav-link btn text-dark g-mint ml-2" + ( this.state.active == '' ? ' nav-active' : "") } href="/">Home</a>  
                         <a className={ "nav-item nav-link btn g-mint text-dark ml-1" + ( this.state.active == 'rentals' ? ' nav-active' : "") } href="/rentals">Rentals</a>
+                        <a className={ "nav-item nav-link btn g-mint text-dark ml-1" + ( this.state.active == 'venues' ? ' nav-active' : "") } href="/venues">Venues</a>
                         <a className={ "nav-item nav-link btn g-mint text-dark ml-1" + ( this.state.active == 'faq' ? ' nav-active' : "") } href="/faq">FAQ</a>
                         <a className={ "nav-item nav-link btn g-mint text-dark ml-1" + ( this.state.active == 'contact' ? ' nav-active' : "") } href="/contact">Contact</a>
                     </div>

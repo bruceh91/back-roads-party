@@ -1,10 +1,10 @@
 import mysql from 'mysql';
 
 let pool = mysql.createPool({
-    host: 'localhost',
-    user: 'Bruce',
-    password: 'test',
-    database: 'BRP'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 });
 
 function executeQuery(sql, args = []) {
@@ -25,7 +25,7 @@ function executeQuery(sql, args = []) {
 
 function callProcedure(procedureName, args = []) {
     let placeholders = generatePlaceholders(args);
-    let callString = `CALL ${procedureName}(${placeholders});`; // CALL GetChirps();, or CALL InsertChirp(?,?,?);
+    let callString = `CALL ${procedureName}(${placeholders});`; 
     return executeQuery(callString, args);
 }
 
