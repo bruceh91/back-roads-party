@@ -39,8 +39,8 @@ class Login extends Component {
         userService.login(this.state.email, this.state.password)
         .then((res) => {
             console.log(res);
-            // this.setState({ redirectToReferrer: true });
-            // this.setState({id: res.id})
+            this.setState({ redirectToReferrer: true });      // these 2
+            this.setState({id: res.id})                      //
             this.props.hello(res[0].id);
         }).catch((err) => {
             if (err.message) {
@@ -87,7 +87,6 @@ class Login extends Component {
                     ): null}
                     <input type="submit" value="Login" className="btn btn-primary" />
                 </form>
-                <h1>x{this.props.currentUserID}</h1>
             </Fragment>
        );
     }

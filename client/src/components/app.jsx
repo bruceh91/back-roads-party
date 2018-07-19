@@ -20,8 +20,14 @@ import UpdateProducts from './admin/adminUpdateProducts';
 import ChangeFAQ from './admin/adminChangeFaq';
 import AddRental from './admin/adminAddRental';
 import UpdateProduct from './admin/adminUpdateProduct';
+import UpdateGallery from './admin/adminUpdateGallery';
+import UpdateCarousel from './admin/adminUpdateCarousel';
+import UpdateParallax from './admin/adminUpdateParallax';
+import ChangeFeatured from './admin/adminChangeFeatured';
+
 import Venues from './venues';
-// import AddRental from './admin/adminAddRental';
+import Gallery from './gallery';
+
 
 class Navigation extends Component {
     constructor(props) {
@@ -32,14 +38,12 @@ class Navigation extends Component {
     }
 
     routes() {
-        if (this.state.loggedIn === false) {
             return (
                 <div>
                     <NavBar />
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route path="/rentals" component={Rentals} />
-                        {/* <Route path="/eventPlanning" render={() => (<EventPlan />)} /> */}
                         <Route path="/login" component={Login} />
                         <Route path="/logout" component={Logout} />
                         <Route path="/details/:id" component={Details} />
@@ -47,29 +51,23 @@ class Navigation extends Component {
                         <Route path="/faq" component={Faq} />
                         <Route path="/contact" component={Contact} />
                         <Route path="/venues" component={Venues} /> 
-                        {/* <PrivateRoute path="/goodbye" component={Goodbye} /> */}
+                        <Route path="/gallery" component={Gallery} />
 
                             {/*    Admin section    */}
+                        <PrivateRoute path="/adminhome" component={AHome} />
+                        <PrivateRoute path="/adminaddrental" component={AddRental} />
+                        <PrivateRoute path="/adminaddproduct" component={AddProduct} />
+                        <PrivateRoute path="/adminupdateproducts" component={UpdateProducts} />
+                        <PrivateRoute path="/adminupdategallery" component={UpdateGallery} />
+                        <PrivateRoute path="/adminchangefaq" component={ChangeFAQ} />
+                        <PrivateRoute path="/adminproduct/:id" component={UpdateProduct} />
+                        <PrivateRoute path="/adminupdatecarousel" component={UpdateCarousel} />
+                        <PrivateRoute path="/adminupdateparallax" component={UpdateParallax} />
+                        <PrivateRoute path="/adminchangefeatured" component={ChangeFeatured} />
 
-                        <Route path="/adminhome" component={AHome} />
-                        <Route path="/adminaddrental" component={AddRental} />
-                        <Route path="/adminaddproduct" component={AddProduct} />
-                        <Route path="/adminupdateproducts" component={UpdateProducts} />
-                        <Route path="/adminchangefaq" component={ChangeFAQ} />
-                        <Route path="/adminproduct/:id" component={UpdateProduct} />
                     </Switch>
                 </div>
             )
-        } else if (this.state.loggedIn === true) {
-            return (
-                <div>
-                    <NavBar />
-                    <Switch>
-                        <Route exact path="/" component={Rentals} />
-                    </Switch>
-                </div>
-            )
-        }
     }
 
     render() {

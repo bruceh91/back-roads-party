@@ -12,22 +12,29 @@ class AdminHome extends Component {
         // console.log(this.props)
         return (
             <Fragment>
-                <div className="pt-5" >
-                    <h1 className="pt-5" >
-                        Click the links below to change things
-                    </h1>
+                <div className="pt-5 mb-5" >
+                <Link className="btn btn-danger float-right mr-5" to="logout" >Log Out</Link>
+                    <h1 className="pt-5 text-center" >Admin Home Page</h1>
+
+                    {/* <hr/> */}
+                    {/* <hr/> */}
+                    {/* <h2><Link className="btn btn-lg btn-warning ml-5 mb-2" to="adminaddrental">Add Rental</Link></h2> */}
+
+                    <hr />
+                    <h2 className="text-center" >add, change, or remove products</h2>
+                    <hr />
+                    <h5><Link className="btn btn-lg btn-warning ml-5 mb-2 w-50" to="adminaddproduct" >Add Product</Link></h5>
+                    <h5><Link className="btn btn-lg btn-warning ml-5 mb-2 w-50" to="adminupdateproducts" >Update Products</Link></h5>
+
+                    <hr />
+                    <h2 className="text-center" >change how the site looks and rules</h2>
+                    <hr />
+                    <h5><Link className="btn btn-lg btn-warning ml-5 mb-2 w-50" to="adminchangefaq" >Change FAQs and Rules</Link></h5>
+                    <h5><Link className="btn btn-lg btn-warning ml-5 mb-2 w-50" to="adminupdategallery" >Update Gallery</Link></h5>
+                    <h5><Link className="btn btn-lg btn-warning ml-5 mb-2 w-50" to="adminupdatecarousel" >Update Carousel<small>(slideshow on home page)</small></Link></h5>
+                    <h5><Link className="btn btn-lg btn-warning ml-5 mb-2 w-50" to="adminupdateparallax" >Update Parallax<small>(moving background picture on home page)</small></Link></h5>
+                    <h5><Link className="btn btn-lg btn-warning ml-5 mb-2 w-50" to="adminchangefeatured" >Change Featured<small>(products on the bottom of home page)</small></Link></h5>
                 </div>
-                <br/>
-                <br/>
-                <h2><Link to="adminaddrental">add rental</Link></h2>
-                <br/>
-                <br />
-                <h4><Link to="adminaddproduct" >add product</Link></h4>
-                <br />
-                <h4><Link to="adminupdateproducts" >update products</Link></h4>
-                <br />
-                <h4><Link to="adminchangefaq" >change faqs and rules</Link></h4>
-                <br />
             </Fragment>
         )
     }

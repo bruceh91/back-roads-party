@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
     let sql =
         `SELECT * FROM products
         WHERE featured IS NOT NULL
+        AND featured != "10"
         ORDER BY featured;`;
     executeQuery(sql)
         .then((data) => {

@@ -8,7 +8,8 @@ class UpdateProducts extends Component {
         super(props);
 
         this.state = {
-            productsList: []
+            productsList: [],
+            venuesList:[]
         }
     }
 
@@ -20,6 +21,11 @@ class UpdateProducts extends Component {
                 this.setState({ productsList: responseJson })
             });
 
+            fetch(`/api/products/venues`)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({ venuesList: responseJson });
+            });
     }
 
     handleClick(id) {
@@ -36,6 +42,28 @@ class UpdateProducts extends Component {
                     </h1>
 
                     {this.state.productsList.map((x, index) => {
+                        return (
+                            <div key={index}>
+                            <hr/>
+                                <div>
+                                    <h3>name: {x.name}</h3>
+                                    <h3>ID: {x.id}</h3>
+                                    <h4>price: {x.price}</h4>
+                                    <h4>description: {x.description}</h4>
+                                    <h4>quantity: {x.quantity}</h4>
+                                    <h4>length: {x.length}</h4>
+                                    <h4>width: {x.width}</h4>
+                                    <h4>height: {x.height}</h4>
+                                    <h4>max people: {x.maxpeople}</h4>
+                                    <img src={x.image} alt={x.name} height='150px' />
+                                </div>
+                                <button onClick={() => this.handleClick(x.id)}>EDIT</button>
+                            </div>
+                        )
+                    })}
+                    <hr/>
+                        <h2>Venues</h2>
+                    {this.state.venuesList.map((x, index) => {
                         return (
                             <div key={index}>
                             <hr/>

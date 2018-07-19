@@ -29,12 +29,12 @@ export default class Featured extends Component {
                     let url = `/details/${x.id}`
                     return (
 
-                        <div className="featured-card card mb-5" key={index}>
+                        <div className="featured-card card mb-5 picture-shadow" key={index}>
                             <img className="card-img-top" src={x.image} alt={x.name} />
-                            <div className="card-body text-center g-mint">
+                            <div className="card-body text-center g-white">
                                 <h5 className="card-title">{x.name}</h5>
-                                <p className="card-text"><small>{x.description}</small></p>
-                                <a href={url} className="fp-button btn btn-primary center-block">More Info</a>
+                                <p className="card-text"><small>{x.featured_text}</small></p>
+                                <a href={url} className="fp-button btn center-block">More Info</a>
                             </div>
                         </div>
                             )

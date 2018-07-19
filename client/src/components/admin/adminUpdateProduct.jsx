@@ -63,7 +63,7 @@ class UpdateProduct extends Component {
 
         const BucketName = 'back-roads-party';
         const bucketRegion = 'us-east-2';
-        const IdentityPoolId = process.env.AWS_POOL_ID;
+        const IdentityPoolId = 'us-east-2:e4c65d86-5d68-4ffb-b793-af7ab1755e5b';
         AWS.config.update({
             region: bucketRegion,
             credentials: new AWS.CognitoIdentityCredentials({

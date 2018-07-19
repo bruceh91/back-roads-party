@@ -3,7 +3,8 @@
 /*                general                       */
 
 .body {
-    background-color: #FEF9F5;
+    background-image: url(https://s3.us-east-2.amazonaws.com/back-roads-party/background.jpg);
+    background-attachment: fixed;
 }
 
 .d-grey-t {
@@ -15,24 +16,44 @@
 }
 
 .g-orange {
-    background-color: #ffc266;
+    background-color: #4093E7;
 }
 
 .g-mint {
     background-color: #98ffff;
 }
 
-.g-grey-border {
-    border-radius: 1em;
-    border: 5px solid #D4D3D3;
+.g-white {
+    background-color: white;
 }
 
+.z-down {
+    z-index: -1;
+}
+
+
 /*              nav bar styling                 */
+.top-logo {
+    padding-top: 3em;
+    text-align: center;
+    height: 300em;
+}
+
+.top-logo-pic {
+    height: 20em;
+    width: 20em;
+}
+
 .navBar-bg {
     height: 2em;
     width: 100%;
     position: fixed;
     z-index: 1;
+}
+
+.nav-color {
+    background-image: url(https://s3.us-east-2.amazonaws.com/back-roads-party/background-nav.jpg);
+    /* opacity: 0.5; */
 }
 
 .navBar-item {
@@ -48,7 +69,7 @@
 }
 
 .nav-active {
-    background-color: cornflowerblue;
+    background-color: deepskyblue;
 }
 
 
@@ -62,12 +83,13 @@
     position: absolute;
     bottom: 0;
     margin: 0 auto;
+    color: black;
 }
 
 /*          rentals page side info box         */
 .rentals-cat {
     margin-top: 2em;
-    margin-left: 23%;
+    /* margin-left: 23%; */
     position: fixed;
     height: 3.5em;
     width: 100%;
@@ -138,19 +160,30 @@
 }
 
 .rentals-head {
-    float: right;
-    width: 75%;
+    float: left;
+    width: 95%;
     margin: .5em 1em;
+}
+
+.picture-shadow {
+    box-shadow: 4px 6px 2px dimgrey;
+}
+
+.text-shadow {
+    box-shadow: 3px 3px 2px dimgrey
 }
 
 .rentals-image {
     width: 50%;
+    
 }
 
 .rentals-text-div {
     width: 50%;
     float: right;
+    box-shadow: 3px 3px 2px dimgrey, inset 3px 0px 2px dimgrey;
 }
+
 
 .rentals-name {
     text-align: center;
@@ -158,6 +191,28 @@
 
 .rentals-description {
     text-align: center;
+}
+
+.rentals-link {
+    color: black;
+    margin: 10px;
+    text-align: center;
+    
+}
+
+.gallery-image {
+    margin: 1em 1em 0em 1em;
+    height: 50px;
+}
+
+.selected {
+    border-style: solid;
+    border-width: 5px;
+    border-color: black;
+}
+
+.c-image {
+    height: 25em;
 }
 
 
@@ -306,4 +361,72 @@
 
 .faq-input {
     width: 300px;
+}
+
+/*          faq page       */
+.faq-list {
+    font-size: 1.5em;
+}
+
+.faq-div {
+    background-color: white;
+}
+
+/*              details             */
+.details-main-image {
+    height: 450px;
+}
+
+.details-images {
+    height: 150px;
+}
+
+.details-text-div {
+    width: 40em;
+}
+
+/*          parallax          */
+
+#para1 {
+    height: 40em;
+}
+
+#para2 {
+    height: 25em;
+}
+
+.story {
+    font-weight: bold;
+    color: black;
+}
+
+#story-div {
+    height: 20em;
+    width: 94%;
+    background-color: lightgrey;
+    position: absolute;
+    margin: 3em 4em; 
+    opacity: 0.25;
+}
+
+.parallax {
+     
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.gallery-modal-image {
+    height: 20em;
+}
+
+.featured-replace-thumb {
+    width: 150px;
+}
+
+.w-40 {
+    width: 40%;
 }

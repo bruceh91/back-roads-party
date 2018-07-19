@@ -11,30 +11,34 @@ class Contact extends Component {
     render() {
         return (
             <Fragment>
-                <div className='pt-5'>
-                    <div className='pt-5'>
-                        <h3>click the FAQ tab above to see our rental policies and rules</h3>
+                
+                <div className="pt-5 text-center">
+                    <h3>Contact Information</h3>
+                    <div className="pt-3 w-75 mx-auto faq-div flex-wrap picture-shadow pb-3">
+                        <h4>Phone: 012-345-6789</h4>
+                        <h5>If we don't answer please leave a message and we will call you back as soon as possible</h5>
+                        <h4>email: blahblah@blah.com</h4>
+                        <h4>facebook: facebook.com/ljndsfjndskjf</h4>
                     </div>
                 </div>
                 <hr />
-                <div>
-                    <h3>-- open hours --</h3>
-                    <ul>
-                        <li>Monday: 9:00-5:00</li>
-                        <li>Tuesday: 9:00-5:00</li>
-                        <li>Wednesday: 9:00-5:00</li>
-                        <li>Thursday: 9:00-5:00</li>
-                        <li>Friday: 9:00-5:00</li>
-                        <li>Saturday: closed</li>
-                        <li>Sunday: closed</li>
-                    </ul>
+                <div className='p-2'>
+                    <h3 className="text-center" >click the FAQ tab above to see our rental policies and rules</h3>
                 </div>
                 <hr />
-                <div>
-                    <h4>Phone: 012-345-6789</h4>
-                    <h4>email: blahblah@blah.com</h4>
-                    <h5>If we don't answer please leave a message and we will call you back as soon as possible</h5>
+                <div className="pt-1 text-center mb-5">
+                    <h3>Hours of Operation</h3>
+                    <div className="pt-3 w-75 mx-auto faq-div flex-wrap picture-shadow pb-3">
+                        <h5 className="faq-list" >Monday: 9:00-5:00</h5>
+                        <h5 className="faq-list" >Tuesday: 9:00-5:00</h5>
+                        <h5 className="faq-list" >Wednesday: 9:00-5:00</h5>
+                        <h5 className="faq-list" >Thursday: 9:00-5:00</h5>
+                        <h5 className="faq-list" >Friday: 9:00-5:00</h5>
+                        <h5 className="faq-list" >Saturday: closed</h5>
+                        <h5 className="faq-list" >Sunday: closed</h5>
+                    </div>
                 </div>
+                
             </Fragment>
         )
     }
