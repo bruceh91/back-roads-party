@@ -398,6 +398,7 @@
 .story {
     font-weight: bold;
     color: black;
+    z-index: 3;
 }
 
 #story-div {
@@ -407,6 +408,7 @@
     position: absolute;
     margin: 3em 4em; 
     opacity: 0.25;
+    
 }
 
 .parallax {
