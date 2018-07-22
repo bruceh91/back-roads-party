@@ -50,6 +50,8 @@ class Gallery extends Component {
                                             <div className="mt-5 pt-5">
                                                 <div className="mt-5" >
                                                     <ol className="carousel-indicators flex-wrap mb-5">
+                                                    <img data-target="#carouselControls" data-slide-to="0" className='preview-image active invisible' src="https://opengameart.org/sites/default/files/Transparency500.png" alt="invisible" />
+
                                                         {this.state.pictureList.map((x, index) => {
                                                             return (
                                                                 <img key={index} data-target="#carouselControls" data-slide-to={index + 1} className='preview-image' src={x.image} alt={x.id} />
@@ -71,5 +73,7 @@ class Gallery extends Component {
         )
     }
 }
+
+// picture in modale messed updateLocale, you need to make a carousel with all picture show up when you click on any picture in the gallery
 
 export default Gallery;

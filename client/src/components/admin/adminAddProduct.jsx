@@ -24,7 +24,7 @@ class AdminAddProduct extends Component {
                 this.setState({ catList: responseJson })
             });
 
-            fetch(`/api/products/cat/id`)
+        fetch(`/api/products/cat/id`)
             .then((response) => response.json())
             .then((responseJson) => {
                 this.setState({ maxID: responseJson[0].id })
@@ -32,20 +32,20 @@ class AdminAddProduct extends Component {
     }
 
     handleProductAddition(name, price, description, quantity, length, width, height, maxpeople) {
-        
+
         let newProductId = (this.state.maxID + 1);
 
         // categories
-        this.state.catList.map( (x, index) => {
+        this.state.catList.map((x, index) => {
             if (document.getElementById(`${x.category}`).checked) {
-                post(`/api/category/reference_table`, {prodID: newProductId, catID: document.getElementById(x.category).value });
+                post(`/api/category/reference_table`, { prodID: newProductId, catID: document.getElementById(x.category).value });
             }
         })
 
         //photo upload
         const BucketName = 'back-roads-party';
         const bucketRegion = 'us-east-2';
-        const IdentityPoolId ='us-east-2:e4c65d86-5d68-4ffb-b793-af7ab1755e5b';
+        const IdentityPoolId = 'us-east-2:e4c65d86-5d68-4ffb-b793-af7ab1755e5b';
         AWS.config.update({
             region: bucketRegion,
             credentials: new AWS.CognitoIdentityCredentials({
@@ -56,9 +56,9 @@ class AdminAddProduct extends Component {
             apiVersion: '2006-03-01',
             params: { Bucket: BucketName }
         });
-        
+
         let albumName = 'products'
-        
+
         // one photo
         console.log('one photo')
         let files = document.getElementById('photo-upload').files;
@@ -70,7 +70,7 @@ class AdminAddProduct extends Component {
         let fileName = `${Date.now()}${Math.floor((Math.random() * 1000))}.${ext}`;
         let albumPhotosKey = encodeURIComponent(albumName) + '/';
         let photoKey = albumPhotosKey + fileName;
-        
+
         s3.upload({
             Key: photoKey,
             Body: file,
@@ -85,16 +85,16 @@ class AdminAddProduct extends Component {
         });
 
         //price transform
-            // price = " " + price
-            // console.log("price:  " + price )
-            // let tempPriceArr = price.splice("");
-            // if (tempPriceArr[0] != "$") {
-            //     tempPriceArr.unshift("$")
-            // }
-            // if(tempPriceArr[tempPriceArr.length-2] != ".") {
-            //     tempPriceArr.push(".00")
-            // } 
-            // let formattedPrice = tempPriceArr.toString();
+        // price = " " + price
+        // console.log("price:  " + price )
+        // let tempPriceArr = price.splice("");
+        // if (tempPriceArr[0] != "$") {
+        //     tempPriceArr.unshift("$")
+        // }
+        // if(tempPriceArr[tempPriceArr.length-2] != ".") {
+        //     tempPriceArr.push(".00")
+        // } 
+        // let formattedPrice = tempPriceArr.toString();
 
         //sending to db
         let data = {
@@ -119,35 +119,35 @@ class AdminAddProduct extends Component {
         post(`/api/products`, data);
         alert(`the product ${name} was added`);
 
-         // multiple photos                      
-         let otherPhotos = document.getElementById('other-photos').files;
-         console.log("otherPhotos[0]  ::: " + otherPhotos[0].name);
-         for (let i = 0; i < otherPhotos.length - 1; i++) {
-                //  console.log("other photo[i].name == " + otherPhotos[i].name);
-                 let photo = otherPhotos[i];
-                 let exte = photo.name.substr(photo.name.lastIndexOf('.') + 1);
-                 let photoName = `${Date.now()}${Math.floor((Math.random() * 1000))}.${exte}`;           
-                 let albumPhotosKey = encodeURIComponent(albumName) + '/';                     
-                 let fileKey = albumPhotosKey + photoName;                                      
-                 s3.upload({                                                                        
-                     Key: fileKey,                                                              
-                     Body: photo,
-                     ACL: 'public-read',
-                     ContentType: `image/${exte}`
-                 }, function (err, data) {
-                     if (err) {
-                         return alert('There was an error uploading your photo: ' + err.message);
-                     }
-                     let photoData = {
-                         product_id: newProductId,
-                         pic_url: 'https://s3.us-east-2.amazonaws.com/back-roads-party/products/' + photoName
-                         }
-                     console.log(photoData)
-                     post(`/api/pictures`, photoData)
-                     alert(`Successfully uploaded ${i} photo.`);
-                 });
-             }
-            //  window.location.reload()
+        // multiple photos                      
+        let otherPhotos = document.getElementById('other-photos').files;
+        console.log("otherPhotos[0]  ::: " + otherPhotos[0].name);
+        for (let i = 0; i < otherPhotos.length - 1; i++) {
+            //  console.log("other photo[i].name == " + otherPhotos[i].name);
+            let photo = otherPhotos[i];
+            let exte = photo.name.substr(photo.name.lastIndexOf('.') + 1);
+            let photoName = `${Date.now()}${Math.floor((Math.random() * 1000))}.${exte}`;
+            let albumPhotosKey = encodeURIComponent(albumName) + '/';
+            let fileKey = albumPhotosKey + photoName;
+            s3.upload({
+                Key: fileKey,
+                Body: photo,
+                ACL: 'public-read',
+                ContentType: `image/${exte}`
+            }, function (err, data) {
+                if (err) {
+                    return alert('There was an error uploading your photo: ' + err.message);
+                }
+                let photoData = {
+                    product_id: newProductId,
+                    pic_url: 'https://s3.us-east-2.amazonaws.com/back-roads-party/products/' + photoName
+                }
+                console.log(photoData)
+                post(`/api/pictures`, photoData)
+                alert(`Successfully uploaded ${i} photo.`);
+            });
+        }
+        window.location.reload()
     }
 
     handleFiles() {
@@ -159,46 +159,21 @@ class AdminAddProduct extends Component {
         return (
             <Fragment>
                 <div className="pt-5" >
-                    <h1 className="pt-5" >
-                        Add products here
-                    </h1>
-                    <ul>
+                    <Link className="btn btn-warning float-right mr-5" to="adminHome" >HOME</Link>
+                    <div className="text-center" >
+                        <h1 className="pt-5 " > Add products here </h1>
+                        <h5>name: <input id="name" type="text" /></h5>
+                        <h5>price: <input id="price" type="text" /></h5>
+                        <h5>description: <input id="description" type="text" /></h5>
+                        <h5>quantity: <input id="quantity" type="text" /></h5>
+                        <h5>length: <input id="length" type="text" />ft</h5>
+                        <h5>width: <input id="width" type="text" />ft</h5>
+                        <h5>height: <input id="height" type="text" />ft</h5>
+                        <h5>max people: <input id="max" type="text" /></h5>
                         <hr />
-                        <li>
-                            name: <input id="name" type="text" />
-                        </li>
-                        <hr />
-                        <li>
-                            price: <input id="price" type="text" />
-                        </li>
-                        <hr />
-                        <li>
-                            description: <input id="description" type="text" />
-                        </li>
-                        <hr />
-                        <li>
-                            quantity: <input id="quantity" type="text" />
-                        </li>
-                        <hr />
-                        <li>
-                            length: <input id="length" type="text" />ft
-                        </li>
-                        <hr />
-                        <li>
-                            width: <input id="width" type="text" />ft
-                        </li>
-                        <hr />
-                        <li>
-                            height: <input id="height" type="text" />ft
-                        </li>
-                        <hr />
-                        <li>
-                            max people: <input id="max" type="text" />
-                        </li>
-                        <hr />
-                    </ul>
+                    </div>
 
-                    <div>
+                    <div className="text-center" >
                         <h1> add pictures here</h1>
                         <h4>main picture</h4>
                         <input id="photo-upload" type="file" />
@@ -206,7 +181,7 @@ class AdminAddProduct extends Component {
                         <input id="other-photos" type="file" multiple="multiple" onChange={() => this.handleFiles(this.files)} />     {/* this next */}
                     </div>
 
-                    <div>
+                    <div className="text-center" >
                         <hr />
                         <h1>categories</h1>
 
@@ -228,23 +203,21 @@ class AdminAddProduct extends Component {
 
                     </div>
 
-                    <div>
+                    <div className="text-center">
                         <h3>is this a venue?</h3>
                         <input id="venue-checkbox" type="checkbox" value="1" /><label htmlFor="venue">check this box if it's a venue</label>
+                        <hr />
+                        <button className="btn btn-lg bg-success" onClick={() => this.handleProductAddition(
+                            document.getElementById("name").value,
+                            document.getElementById("price").value,
+                            document.getElementById("description").value,
+                            document.getElementById("quantity").value,
+                            document.getElementById("length").value,
+                            document.getElementById("width").value,
+                            document.getElementById("height").value,
+                            document.getElementById("max").value
+                        )}>add product</button>
                     </div>
-
-                    <hr />
-                    <button onClick={() => this.handleProductAddition(
-                        document.getElementById("name").value,
-                        document.getElementById("price").value,
-                        document.getElementById("description").value,
-                        document.getElementById("quantity").value,
-                        document.getElementById("length").value,
-                        document.getElementById("width").value,
-                        document.getElementById("height").value,
-                        document.getElementById("max").value
-                    )}>add product</button>
-
                 </div>
             </Fragment>
         )

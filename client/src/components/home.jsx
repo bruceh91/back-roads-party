@@ -10,7 +10,8 @@ export default class Home extends Component {
 
         this.state = {
             parallax1: "",
-            parallax2: ""
+            parallax2: "",
+            story: [{value: ""},{value: ""}]
         }
     }
 
@@ -20,6 +21,12 @@ export default class Home extends Component {
             .then((responseJson) => {
                 this.setState({ parallax1: responseJson[0], parallax2: responseJson[1] })
             });
+
+        fetch(`/api/products/misc/misc`)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({ story: responseJson })
+            });
     }
 
 
@@ -27,7 +34,9 @@ export default class Home extends Component {
     render() {
         // backgroundImage: "url(" + { Background } + ")"
         let para1 = { backgroundImage: `url(${this.state.parallax1.picture})` }
-        let para2 = { backgroundImage: `linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(${this.state.parallax2.picture})`};
+        let para2 = { backgroundImage: `linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url(${this.state.parallax2.picture})` };
+        let header = this.state.story[0].value;
+        let text = this.state.story[1].value;
         return (
             <Fragment>
                 <div id="para1" className="top-logo parallax" style={para1}>
@@ -41,11 +50,9 @@ export default class Home extends Component {
                     <div id="para2" className='home-header-text parallax mt-4' style={para2}>
                         {/* <div id="story-div" className="ml-5" ></div> */}
                         <div >
-                            <h3 className='text-center pt-5 story text-dark' >our story</h3>
+                            <h3 className='text-center pt-5 story text-dark' >{header}</h3>
                             <p className='text-center mt-3 story p-5 text-dark'>
-                                <strong>
-                                    Back Roads Party Co. was made Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit.
-                            </strong>
+                                <strong>{text}</strong>
                             </p>
                         </div>
                     </div>

@@ -48,12 +48,12 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     productTable.getOne(req.params.id)
-    .then((results) => {
-        res.json(results);
-    }).catch((err) => {
-        console.log(err);
-        res.sendStatus(500);
-    });
+        .then((results) => {
+            res.json(results);
+        }).catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+        });
 });
 
 router.get('/category/:id', (req, res) => {
@@ -126,7 +126,7 @@ router.get('/cat/id', (req, res) => {
     let sql = `SELECT
                     MAX(id) AS id
                 FROM products;`
-                console.log(sql)
+    console.log(sql)
     executeQuery(sql)
         .then((results) => {
             res.json(results);
@@ -134,6 +134,53 @@ router.get('/cat/id', (req, res) => {
             console.log(err);
             res.sendStatus(500);
         });
+});
+
+router.delete('/cat/:id', (req, res) => {
+    let sql = `DELETE FROM prod_cat_ref
+                WHERE prodID = ${req.params.id};`
+    console.log(sql)
+    executeQuery(sql)
+        .then((results) => {
+            res.json(results);
+        }).catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+        });
+});
+
+router.get('/misc/misc', (req, res) => {
+    let sql = `SELECT * FROM misc;`
+    executeQuery(sql)
+        .then((results) => {
+            res.json(results);
+        }).catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+        });
+});
+
+router.put('/misc/misc/:id', (req, res) => {
+    let sql = `UPDATE misc
+                SET value = "${req.body.value}"
+                WHERE name = "${req.params.id}";`
+    console.log(sql)
+    executeQuery(sql)
+        .then((results) => {
+            res.json(results);
+        }).catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+        });
+
+
+    // new Table('misc').update(req.params.id, req.body)
+    //     .then((results) => {
+    //         res.json(results);
+    //     }).catch((err) => {
+    //         console.log(err);
+    //         res.sendStatus(500);
+    //     });
 });
 
 export default router;

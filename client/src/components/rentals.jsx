@@ -174,7 +174,7 @@ export default class Rentals extends Component {
                             </div>
                             <hr />
                             <ol className="carousel-indicators flex-wrap mb-5">
-                                <img id="main-preview" data-target="#carouselControls" data-slide-to="0" className='preview-image  active' src="" alt="main" />
+                                <img id="main-preview" data-target="#carouselControls" data-slide-to="0" className='preview-image active' src="" alt="main" />
                                 {this.state.pictureList.map((x, index) => {
                                     return (
                                         <img key={index} data-target="#carouselControls" data-slide-to={index + 1} className='preview-image ' src={x.pic_url} alt={x.id} />

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { post, destroy, put } from '../../services/base';
+import { Link } from 'react-router-dom';
 import { render } from 'react-dom';
 
 class AdminUpdateCarousel extends Component {
@@ -105,9 +106,10 @@ class AdminUpdateCarousel extends Component {
         // console.log(this.props)
         return (
             <div className="pt-5">
+                <Link className="btn btn-warning float-right mr-5" to="adminHome" >HOME</Link>
                 <div className="mt-5" >
                     <hr />
-                    <h1> add pictures to carousel here</h1>
+                    <h1 className="text-center"> add pictures to carousel here</h1>
                     <input id="photo-upload" type="file" />
                     <h3>new header</h3>
                     <input id="new-header-input" className="form-control input-lg" type="text" placeholder="new gallery text" />
@@ -119,6 +121,8 @@ class AdminUpdateCarousel extends Component {
 
 
                 <div>
+                    <h1 className="text-center" >update existing pictures</h1>
+                    <hr/>
                     {this.state.pictureList.map((x, index) => {
                         return (
                             <div key={index} className="m-2">
@@ -127,12 +131,12 @@ class AdminUpdateCarousel extends Component {
                                 <button className="ml-5" onClick={() => this.handleImageDelete(x.id)}>delete</button>
 
                                 <p className="pt-2" > header: {x.header}</p>
-                                <input id={"header-input"+index} className="form-control input-lg" type="text" placeholder="new gallery text" />
-                                <button onClick={() => this.handleTextChange(x.id, document.getElementById("header-input"+index).value, "header")}>update</button>
+                                <input id={"header-input" + index} className="form-control input-lg" type="text" placeholder="new gallery text" />
+                                <button onClick={() => this.handleTextChange(x.id, document.getElementById("header-input" + index).value, "header")}>update</button>
 
                                 <p className="pt-2" >text: {x.text}</p>
-                                <input id={"text-input"+index} className="form-control input-lg" type="text" placeholder="new gallery text" />
-                                <button onClick={() => this.handleTextChange(x.id, document.getElementById("text-input"+index).value, "text")}>update</button>
+                                <input id={"text-input" + index} className="form-control input-lg" type="text" placeholder="new gallery text" />
+                                <button onClick={() => this.handleTextChange(x.id, document.getElementById("text-input" + index).value, "text")}>update</button>
                                 <hr />
                             </div>
                         )

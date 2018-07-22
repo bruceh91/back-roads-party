@@ -522,4 +522,10 @@
     min-width: 200px;
 }
 
+.invisible {
+    height: 1px;
+    width: 1px;
+    margin:0;
+}
+
 

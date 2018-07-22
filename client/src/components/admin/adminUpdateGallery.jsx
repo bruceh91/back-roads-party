@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { post, destroy, put } from '../../services/base';
+import { Link } from 'react-router-dom';
 import { render } from 'react-dom';
 
 class AdminUpdateGallery extends Component {
@@ -96,9 +97,10 @@ class AdminUpdateGallery extends Component {
         // console.log(this.props)
         return (
             <div className="pt-5">
-                <div className="mt-5" >
+                <Link className="btn btn-warning float-right mr-5" to="adminHome" >HOME</Link>
+                <div className="mt-5 text-center" >
                     <hr />
-                    <h1> add pictures to gallery here</h1>
+                    <h1 className="text-center" > add pictures to gallery here</h1>
                     <input id="photo-upload" type="file" />
                     <button onClick={() => this.handleAddition()} > add picture </button>
                 </div>
@@ -106,6 +108,8 @@ class AdminUpdateGallery extends Component {
 
 
                 <div>
+                    <h1 className="text-center" >Update existing pictures</h1>
+                    <hr/>
                     {this.state.pictureList.map((x, index) => {
                         return (
                             <div key={index} className="m-2">
@@ -113,8 +117,8 @@ class AdminUpdateGallery extends Component {
                                 <button className="ml-5" onClick={() => this.handleImageDelete(x.id)}>delete</button>
                                 <p className="pt-2" >text: {x.text}</p>
                                 {/* <label for="text-input"></label> */}
-                                <input id={"text-input"+index} className="form-control input-lg" type="text" placeholder="new gallery text" />
-                                <button onClick={() => this.handleTextChange(x.id, document.getElementById("text-input"+index).value)}>update</button>
+                                <input id={"text-input" + index} className="form-control input-lg" type="text" placeholder="new gallery text" />
+                                <button onClick={() => this.handleTextChange(x.id, document.getElementById("text-input" + index).value)}>update</button>
                                 <hr />
                             </div>
                         )

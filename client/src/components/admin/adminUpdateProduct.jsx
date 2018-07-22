@@ -166,6 +166,7 @@ class UpdateProduct extends Component {
         return (
             <Fragment>
                 <div className="pt-5" >
+                <Link className="btn btn-warning float-right mr-5" to="adminHome" >HOME</Link>
                     <h1 className="pt-5" >
                         Update product here
                         <hr />

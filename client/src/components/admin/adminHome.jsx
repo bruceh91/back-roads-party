@@ -34,6 +34,7 @@ class AdminHome extends Component {
                     <h5 className="text-center"><Link className="btn btn-lg btn-warning ml-5 mb-2 w-50 d-inline-block text-truncate" to="adminupdatecarousel" >Update Carousel<small>(slideshow on home page)</small></Link></h5>
                     <h5 className="text-center"><Link className="btn btn-lg btn-warning ml-5 mb-2 w-50 d-inline-block text-truncate" to="adminupdateparallax" >Update Parallax<small>(moving background picture on home page)</small></Link></h5>
                     <h5 className="text-center"><Link className="btn btn-lg btn-warning ml-5 mb-2 w-50 d-inline-block text-truncate" to="adminchangefeatured" >Change Featured<small>(products on the bottom of home page)</small></Link></h5>
+                    <h5 className="text-center"><Link className="btn btn-lg btn-warning ml-5 mb-2 w-50 d-inline-block text-truncate" to="adminchangehometext" >Change home text and contact page</Link></h5>
                 </div>
             </Fragment>
         )

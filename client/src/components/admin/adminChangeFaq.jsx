@@ -86,44 +86,17 @@ class ChangeFAQ extends Component {
     render() {
         return (
             <Fragment>
-                {/* <div>
-                    <div className='pt-5'>
-                        <h1 className='pt-5'>current rules and policies</h1>
-                        <ol className='pt-5'>
-                            {this.state.rulesList.map((x, index) => {
-                                return (
-                                    <li key={index + "r"}>{x.rule}</li>
-                                )
-                            })}
-                        </ol>
-                    </div>
-                    <div>
-                        <h1> current frequently asked questions</h1>
-                        <ul>
-                            {this.state.faqList.map((x, index) => {
-                                return (
-                                    <li key={index + "qa"}>{x.question}: {x.answer}</li>
-                                )
-                            })}
-                        </ul>
-                        <br />
-                    </div>
-                </div> */}
-
-                <div>
-                    <hr />
+                <div className="pt-5" >
                     <hr />
                 </div>
+                <div>   
+                <Link className="btn btn-warning float-right mr-5" to="adminHome" >HOME</Link>
 
-                <div>
                     <div>
-                        <h3>rules and policies</h3>
+                        <h3 className="text-center" >rules and policies</h3>
                         <ol>
                             {this.state.rulesList.map((x, index) => {
                                 return (
-
-                                    // somewhere here the order of rules is being mixed
-
                                     <li key={index + "R"} >
                                         <input id={index + "R"} className="rules-input mb-2" type="text" defaultValue={x.rule} />
                                         <button onClick={() => this.handleRulesUpdate(x.id, document.getElementById(index + "R").value)}>update</button>
@@ -139,8 +112,9 @@ class ChangeFAQ extends Component {
                             </li>
                         </ol>
                     </div>
+                    <hr/>
                     <div>
-                        <h3> frequently asked questions</h3>
+                        <h3 className="text-center" > frequently asked questions</h3>
                         <ul>
                             {this.state.faqList.map((x, index) => {
                                 return (

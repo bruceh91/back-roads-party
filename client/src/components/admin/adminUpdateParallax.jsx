@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { post, destroy, put } from '../../services/base';
+import { Link } from 'react-router-dom';
 import { render } from 'react-dom';
 
 class AdminUpdateParallax extends Component {
@@ -40,7 +41,7 @@ class AdminUpdateParallax extends Component {
 
         // one photo
         console.log('one photo')
-        let files = document.getElementById('photo-upload'+paraId).files;
+        let files = document.getElementById('photo-upload' + paraId).files;
         if (!files.length) {
             return alert('Please choose a file to upload first.');
         }
@@ -85,20 +86,21 @@ class AdminUpdateParallax extends Component {
     render() {
         return (
             <div className="pt-5">
-                <div className="mt-5" >
+                <Link className="btn btn-warning float-right mr-5" to="adminHome" >HOME</Link>
+                <div className="mt-5 text-center" >
                     <hr />
                     <h1> change parallax pictures here</h1>
                 </div>
                 <hr className="mb-5" />
 
 
-                <div>
+                <div className="d-flex flex-column">
                     {this.state.pictureList.map((x, index) => {
                         return (
-                            <div key={index} className="m-2">
+                            <div key={index} className="m-2 w-100">
                                 <img src={x.picture} className="details-images text-shadow" alt="photo" />
                                 <h5>upload different picture here</h5>
-                                <input id={"photo-upload"+x.id} type="file" />
+                                <input id={"photo-upload" + x.id} type="file" />
                                 <button onClick={() => this.handleAddition(x.id, index + 1)} > change picture </button>
                                 <hr />
                             </div>

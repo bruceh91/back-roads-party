@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { render } from 'react-dom';
+import { Link } from 'react-router-dom';
 import { put } from '../../services/base';
 
 
@@ -72,11 +73,12 @@ class AdminChangeFeatured extends Component {
         return (
             <Fragment>
                 <div className="pt-5" >
-                    <h1 className="pt-5" >
+                <Link className="btn btn-warning float-right mr-5" to="adminHome" >HOME</Link>
+                    <h1 className="pt-5 text-center" >
                         Update featured here
                     </h1>
                     <hr />
-                    <div className="d-flex flex-wrap">
+                    <div className="d-flex flex-wrap justify-content-around">
                         {this.state.featuredList.map((x, index) => {
                             let url = `/details/${x.id}`
                             return (
