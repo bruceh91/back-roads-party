@@ -29,13 +29,13 @@ class Contact extends Component {
                 <div className="pt-1 text-center mb-5">
                     <h3>Hours of Operation</h3>
                     <div className="pt-3 w-75 mx-auto faq-div flex-wrap picture-shadow pb-3">
-                        <h5 className="faq-list" >Monday: 9:00-5:00</h5>
-                        <h5 className="faq-list" >Tuesday: 9:00-5:00</h5>
-                        <h5 className="faq-list" >Wednesday: 9:00-5:00</h5>
-                        <h5 className="faq-list" >Thursday: 9:00-5:00</h5>
-                        <h5 className="faq-list" >Friday: 9:00-5:00</h5>
-                        <h5 className="faq-list" >Saturday: closed</h5>
-                        <h5 className="faq-list" >Sunday: closed</h5>
+                        <p className="faq-list" >Monday: 9:00-5:00</p>
+                        <p className="faq-list" >Tuesday: 9:00-5:00</p>
+                        <p className="faq-list" >Wednesday: 9:00-5:00</p>
+                        <p className="faq-list" >Thursday: 9:00-5:00</p>
+                        <p className="faq-list" >Friday: 9:00-5:00</p>
+                        <p className="faq-list" >Saturday: closed</p>
+                        <p className="faq-list" >Sunday: closed</p>
                     </div>
                 </div>
                 

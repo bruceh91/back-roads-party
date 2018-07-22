@@ -102,7 +102,7 @@ export default class Rentals extends Component {
                     <Calender sendQuan={() => this.getRentedQuan()} dateSelected={this.state.date} prodId={this.state.pID} prodQuan={this.state.pQuant} />
                     <Link to={`/details/${this.state.pID}`} className='btn fp-button' >more details</Link>
                 </div> */}
-                <div className='rentals-container'>
+                <div className='rentals-container w-80 mx-auto mb-5 pt-5'>
                     {/* <div className='rentals-search-div'>
                         <h5 className='rentals-search-text'>type date here to see available products (mm/dd/yyyy)</h5>
                         <input className='rentals-input' type="text" onChange={this.handleDateChange} placeholder={this.state.dateVal} />
@@ -111,18 +111,36 @@ export default class Rentals extends Component {
                     {this.state.productsList.map((x, index) => {
                         return (
                             //onClick={() => this.handleClick(index)}   used on main div for calender and info
-                            <div className='rentals-head' key={index}>
-                                {/* make shadow here */}
-                                <img className='rentals-image w-50 float-left picture-shadow' src={x.image} alt={x.name} onClick={() => { this.onPicClick(x.id) }} data-toggle="modal" data-target=".pictures-modal" />
-                                <div className='rentals-text-div w-50 float-right g-white pt-5 pb-5 mt-5' >
-                                    <h3 className='rentals-name' >{x.name}</h3>
-                                    <h5 className='rentals-description' >{x.description}</h5>
-                                    <h6 className="text-center mx-auto mt-3" >Price:    {x.price}</h6>
-                                    <div className="rentals-link">
-                                        <a href={`/details/${x.id}`} className="rentals-link btn btn-info">more details</a>
+                            
+                            
+                            // <div className='rentals-head' key={index}>
+                            //     {/* make shadow here */}
+                            //     <img className='rentals-image w-50 float-left picture-shadow' src={x.image} alt={x.name} onClick={() => { this.onPicClick(x.id) }} data-toggle="modal" data-target=".pictures-modal" />
+                            //     <div className='rentals-text-div w-50 float-right g-white pt-5 pb-5 mt-5' >
+                            //         <h3 className='rentals-name' >{x.name}</h3>
+                            //         <h5 className='rentals-description' >{x.description}</h5>
+                            //         <h6 className="text-center mx-auto mt-3" >Price:    {x.price}</h6>
+                            //         <div className="rentals-link">
+                            //             <a href={`/details/${x.id}`} className="rentals-link btn btn-info">more details</a>
+                            //         </div>
+                            //     </div>
+                            // </div>
+
+                            <div key={index} className="d-flex flex-wrap pt-5" >
+                                <div className="mx-auto details-main-div" >
+                                    <img src={x.image} className="details-main-image w-50 float-left picture-shadow" onClick={() => { this.onPicClick(x.id) }} alt="main-image" data-toggle="modal" data-target=".pictures-modal" />
+                                    <div className="text-center mt-4 picture-shadow g-white w-50 float-left pl-4 pr-5 pt-2 details-text-div">
+                                        <h3 className='rentals-name' >{x.name}</h3>
+                                        <h5 className='rentals-description' >{x.description}</h5>
+                                        <h6 className="text-center mx-auto mt-3" >Price:    {x.price}</h6>
+                                        <div className="rentals-link">
+                                            <a href={`/details/${x.id}`} className="rentals-link btn btn-info">more details</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+
                         )
                     })}
                 </div>
@@ -132,7 +150,7 @@ export default class Rentals extends Component {
                         <div className="modal-content">
                             <h3>Picture Gallery</h3>
                             <div id="carouselControls" className="carousel slide m-2" data-ride="carousel">
-                                <div className="carousel-inner">
+                                <div className="carousel-inner carousel-inner-slide-show">
                                     <div className="carousel-item active">
                                         <img id="main-modal-image" className='d-block c-image mx-auto' src="" alt="main" value={this.state.pictureList.length + 1} />
                                     </div>
@@ -156,10 +174,10 @@ export default class Rentals extends Component {
                             </div>
                             <hr />
                             <ol className="carousel-indicators flex-wrap mb-5">
-                                <img id="main-preview" data-target="#carouselControls" data-slide-to="0" className='gallery-image active' src="" alt="main" />
+                                <img id="main-preview" data-target="#carouselControls" data-slide-to="0" className='preview-image  active' src="" alt="main" />
                                 {this.state.pictureList.map((x, index) => {
                                     return (
-                                        <img key={index} data-target="#carouselControls" data-slide-to={index + 1} className='gallery-image' src={x.pic_url} alt={x.id} />
+                                        <img key={index} data-target="#carouselControls" data-slide-to={index + 1} className='preview-image ' src={x.pic_url} alt={x.id} />
                                     )
                                 })}
                             </ol>

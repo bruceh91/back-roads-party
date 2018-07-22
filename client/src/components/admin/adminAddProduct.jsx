@@ -84,8 +84,21 @@ class AdminAddProduct extends Component {
             alert('Successfully uploaded main photo.');
         });
 
+        //price transform
+            // price = " " + price
+            // console.log("price:  " + price )
+            // let tempPriceArr = price.splice("");
+            // if (tempPriceArr[0] != "$") {
+            //     tempPriceArr.unshift("$")
+            // }
+            // if(tempPriceArr[tempPriceArr.length-2] != ".") {
+            //     tempPriceArr.push(".00")
+            // } 
+            // let formattedPrice = tempPriceArr.toString();
+
         //sending to db
         let data = {
+            id: this.state.maxID + 1,
             name,
             price,
             description,
@@ -102,15 +115,15 @@ class AdminAddProduct extends Component {
         }
 
 
-        console.log(`data      =      ${data}`)
+        console.log(`data      =      ${JSON.stringify(data)}`)
         post(`/api/products`, data);
         alert(`the product ${name} was added`);
 
          // multiple photos                      
          let otherPhotos = document.getElementById('other-photos').files;
-         console.log(otherPhotos);
-         for (let i = 0; i <= otherPhotos.length + 1; i++) {
-                 console.log(otherPhotos[i]);
+         console.log("otherPhotos[0]  ::: " + otherPhotos[0].name);
+         for (let i = 0; i < otherPhotos.length - 1; i++) {
+                //  console.log("other photo[i].name == " + otherPhotos[i].name);
                  let photo = otherPhotos[i];
                  let exte = photo.name.substr(photo.name.lastIndexOf('.') + 1);
                  let photoName = `${Date.now()}${Math.floor((Math.random() * 1000))}.${exte}`;           
@@ -134,7 +147,7 @@ class AdminAddProduct extends Component {
                      alert(`Successfully uploaded ${i} photo.`);
                  });
              }
-             window.location.reload()
+            //  window.location.reload()
     }
 
     handleFiles() {

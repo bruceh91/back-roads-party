@@ -23,23 +23,25 @@ export default class Featured extends Component {
     render() {
         return (
             <Fragment>
+            
                 <h1>featured products</h1>
                 <div className='d-flex flex-wrap justify-content-around'>
                 {this.state.featuredProductsList.map((x, index) => {
                     let url = `/details/${x.id}`
                     return (
 
-                        <div className="featured-card card mb-5 picture-shadow" key={index}>
+                        <div className="featured-card card m-2 picture-shadow  featured-prd-container" key={index}>
                             <img className="card-img-top" src={x.image} alt={x.name} />
                             <div className="card-body text-center g-white">
                                 <h5 className="card-title">{x.name}</h5>
                                 <p className="card-text"><small>{x.featured_text}</small></p>
-                                <a href={url} className="fp-button btn center-block">More Info</a>
+                                <a href={url} className="rentals-link btn btn-info">More Info</a>
                             </div>
                         </div>
                             )
                 })}
                 </div>
+     
             </Fragment>
         );
     }

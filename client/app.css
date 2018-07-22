@@ -51,13 +51,21 @@
     z-index: 1;
 }
 
+.nav-active {
+    z-index: 3;
+}
+
 .nav-color {
     background-image: url(https://s3.us-east-2.amazonaws.com/back-roads-party/background-nav.jpg);
     /* opacity: 0.5; */
 }
 
+.nav-color.collapsed {
+    background-color: #C0C0C0
+}
+
 .navBar-item {
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 .navBar-logo-btn {
@@ -70,6 +78,28 @@
 
 .nav-active {
     background-color: deepskyblue;
+}
+
+.nav-tog {
+    background-image: url("https://image.flaticon.com/icons/png/512/54/54206.png")
+}
+
+.nav-tog-button {
+    margin: 0px;
+}
+
+.navBar-item.show {
+    /* background-color: red; */
+    background-image: linear-gradient(rgba(255,255,255), rgba(255,255,255, 0.5));
+    width: 45%;
+}
+
+.cat-nav-spacer {
+    margin-right: 5em;
+}
+
+.nav-brand {
+    z-index: -1;
 }
 
 
@@ -113,6 +143,21 @@
     border-right: 4em solid #D4D3D3; 
   }
 
+  .nav-cat-bg {
+      padding-top: 7em;
+      padding-bottom: 0em;
+      width: 100%;
+      position: fixed;
+  }
+
+  .gradient {
+    height: 20px;
+    width: 100%;
+    /* background-color: red; */
+    position: fixed;
+    background-image: linear-gradient(rgba(211,211,211,0.5), rgba(211,211,211));
+  }
+
 /* .rentals-cat-space {
     height: 1em;
     width: 22%;
@@ -136,7 +181,7 @@
 }
 
 .rentals-container {
-    padding-top: 5.5em;
+    /* padding-top: 5.5em; */
 }
 
 
@@ -200,10 +245,20 @@
     
 }
 
-.gallery-image {
+.preview-image {
     margin: 1em 1em 0em 1em;
-    height: 50px;
+    height: 40px;
+    
+    /* min-height: 15px; */
 }
+
+.gallery-image {
+    height: 200px;
+}
+
+/* .gallery-container {
+
+} */
 
 .selected {
     border-style: solid;
@@ -211,8 +266,12 @@
     border-color: black;
 }
 
+.carousel-inner-slide-show {
+    min-height: 20em;
+}
+
 .c-image {
-    height: 25em;
+    width: 90%;
 }
 
 
@@ -374,15 +433,31 @@
 
 /*              details             */
 .details-main-image {
-    height: 450px;
+    /* height: 450px; */
+    width: auto;
+    height:auto;
+    min-width: 300px;
 }
 
-.details-images {
-    height: 150px;
+.details-main-div {
+    /* width: auto; */
+    height:auto;
+    /* background-color: red; */
 }
 
 .details-text-div {
+    min-height: 100px;
     width: 40em;
+    /* overflow: scroll; */
+    height: auto;
+    /* max-height: 500px; */
+    width: auto;
+    min-width: 250px;
+}
+
+.details-images {
+    max-height: 150px;
+    height: auto;
 }
 
 /*          parallax          */
@@ -422,13 +497,29 @@
 }
 
 .gallery-modal-image {
-    height: 20em;
+    width: 90%;
+    max-height: 100em;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .featured-replace-thumb {
     width: 150px;
 }
 
-.w-40 {
-    width: 40%;
+.w-80 {
+
+    width: 80%;
 }
+
+
+.home-header-text {
+    overflow: auto;
+}
+
+.featured-prd-container {
+    min-width: 200px;
+}
+
+

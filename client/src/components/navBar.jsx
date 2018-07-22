@@ -27,8 +27,8 @@ export default class NavBar extends Component {
 
                 <nav className="navbar navbar-expand-lg nav-color navBar-bg">
 
-                    <button className="navbar-toggler navBar-item" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+                    <button className="navbar-toggler navBar-item nav-tog-button float-left" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon nav-tog float-left"></span>
                     </button>
                     <div className="collapse navbar-collapse navBar-item" id="navbarNavAltMarkup" >
                         <div className="navbar-nav">

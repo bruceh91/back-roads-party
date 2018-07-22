@@ -22,14 +22,16 @@ class Gallery extends Component {
     render() {
         // console.log(this.props)
         return (
-            <div className="pt-5">
-                <div className="d-flex flex-wrap">
+            <div className="pt-5 pb-5">
+                <h1 className="text-center">Picture Gallery</h1>
+                <hr />
+                <div className="d-flex flex-wrap justify-content-around">
                     {this.state.pictureList.map((x, index) => {
                         let target = `.pictures-modal${index}`;
                         return (
-                            <div key={index} className="m-2">
+                            <div key={index} className="ml-1 mt-3">
                                 <div>
-                                    <img src={x.image} className="details-images text-shadow" alt="other photo" data-toggle="modal" data-target={target} />
+                                    <img src={x.image} className="gallery-image text-shadow" alt="other photo" data-toggle="modal" data-target={target} />
                                 </div>
                             </div>
                         )
@@ -40,19 +42,22 @@ class Gallery extends Component {
                             <div key={index} className={target} id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby={target} aria-hidden="true">
                                 <div className="modal-dialog modal-lg w-100" role="document">
                                     <div className="modal-content">
-                                        <div className="modal-header">
-                                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div className="modal-body mx-auto">
-                                            <img src={x.image} className="details-images gallery-modal-image text-shadow " alt="other photo" data-toggle="modal" data-target=".pictures-modal" />
-                                            <hr/>
-                                            <p>{x.text}</p>
-                                        </div>
-                                        <div className="modal-footer">
-                                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" className="btn btn-primary">Save changes</button>
+                                        <div className="modal-body">
+                                            <img src={x.image} className="d-block c-image mx-auto" alt="other photo" data-toggle="modal" data-target=".pictures-modal" />
+                                            <hr />
+                                            <p className="text-center" >{x.text}</p>
+                                            <hr />
+                                            <div className="mt-5 pt-5">
+                                                <div className="mt-5" >
+                                                    <ol className="carousel-indicators flex-wrap mb-5">
+                                                        {this.state.pictureList.map((x, index) => {
+                                                            return (
+                                                                <img key={index} data-target="#carouselControls" data-slide-to={index + 1} className='preview-image' src={x.image} alt={x.id} />
+                                                            )
+                                                        })}
+                                                    </ol>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

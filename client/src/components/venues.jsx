@@ -43,32 +43,38 @@ class Venues extends Component {
 
     render() {
         return (
-            <div>
-                <h1 className="pt-5" >Venues</h1>
+            <div >
+                <h1 className="pt-5 text-center" >Venues</h1>
                 <hr />
+                <div className='rentals-container mx-auto mb-5'>
                 {this.state.venuesList.map((x, index) => {
                     return (
-                        <div className="d-flex" key={index}>
-                            <img className="picture-shadow ml-3" src={x.image} alt={x.name} height="450px" onClick={() => { this.onPicClick(x.id) }} data-toggle="modal" data-target=".pictures-modal" />
-                            <div className="g-white text-center m-5 picture-shadow" >
-                                <h4>{x.name}</h4>
-                                <hr />
-                                <h6 className="p-3" >{x.description}</h6>
-                                <h6>maximum number of guests: {x.maxpeople}</h6>
+                        <div className="d-flex flex-wrap ml-2 mr-2" key={index}>
+                            <div className="mx-auto details-main-div" >
+
+                                <img className="details-main-image w-50 float-left picture-shadow" src={x.image} alt={x.name} height="450px" onClick={() => { this.onPicClick(x.id) }} data-toggle="modal" data-target=".pictures-modal" />
+                                <div className="text-center mt-4 picture-shadow g-white w-50 float-left pl-4 pr-5 pt-2 details-text-div" >
+                                    <h4 className='rentals-name'>{x.name}</h4>
+                                    <hr />
+                                    <p className='rentals-description' >{x.description}</p>
+                                    <h6 className="text-center mx-auto mt-3" >Price:    {x.price}</h6>
+                                    <h6 >maximum number of guests: {x.maxpeople}</h6>
+                                </div>
                             </div>
                         </div>
                     )
                 })}
+                </div>
 
                 <hr className="mt-5 mb-5" />
                 <div className="d-flex flex-wrap" >
-                {this.state.picsList.map((x, index) => {
-                    return (
-                        <div key={index}>
-                            <img src={x.pic_url} alt={x.id} className="float-left m-2 mb-5 text-shadow" height="150px" onClick={() => { this.onPicClick(x.product_id) }} data-toggle="modal" data-target=".pictures-modal" />
-                        </div>
-                    )
-                })}
+                    {this.state.picsList.map((x, index) => {
+                        return (
+                            <div key={index}>
+                                <img src={x.pic_url} alt={x.id} className="float-left m-2 mb-5 text-shadow" height="150px" onClick={() => { this.onPicClick(x.product_id) }} data-toggle="modal" data-target=".pictures-modal" />
+                            </div>
+                        )
+                    })}
                 </div>
 
 
@@ -78,14 +84,14 @@ class Venues extends Component {
                         <div className="modal-content">
                             <h3>Picture Gallery</h3>
                             <div id="carouselControls" className="carousel slide m-2" data-ride="carousel">
-                                <div className="carousel-inner">
+                                <div className="carousel-inner carousel-inner-slide-show">
                                     <div className="carousel-item active">
                                         <img id="main-modal-image" className='d-block c-image mx-auto' src="" alt="main" value={this.state.picsList.length + 1} />
                                     </div>
                                     {this.state.picsList.map((x, index) => {
                                         return (
                                             <div key={index} className="carousel-item">
-                                                <img className="d-block c-image mx-auto" src={x.pic_url} alt="x.id" value={index} />
+                                                <img className="d-block c-image mx-auto text-shadow" src={x.pic_url} alt="x.id" value={index} />
                                             </div>
                                         )
                                     })}
@@ -102,16 +108,16 @@ class Venues extends Component {
                             </div>
                             <hr />
                             <div className="mt-5 pt-5">
-                            <div className="mt-5" >
-                            <ol className="carousel-indicators flex-wrap mb-5">
-                                <img id="main-preview" data-target="#carouselControls" data-slide-to="0" className='gallery-image active' src="" alt="main" />
-                                {this.state.picsList.map((x, index) => {
-                                    return (
-                                        <img key={index} data-target="#carouselControls" data-slide-to={index + 1} className='gallery-image' src={x.pic_url} alt={x.id} />
-                                    )
-                                })}
-                            </ol>
-                            </div>
+                                <div className="mt-5" >
+                                    <ol className="carousel-indicators flex-wrap mb-5">
+                                        <img id="main-preview" data-target="#carouselControls" data-slide-to="0" className='preview-image active' src="" alt="main" />
+                                        {this.state.picsList.map((x, index) => {
+                                            return (
+                                                <img key={index} data-target="#carouselControls" data-slide-to={index + 1} className='preview-image' src={x.pic_url} alt={x.id} />
+                                            )
+                                        })}
+                                    </ol>
+                                </div>
                             </div>
                             <hr />
                         </div>

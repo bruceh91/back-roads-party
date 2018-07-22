@@ -42,10 +42,11 @@ class Details extends Component {
         let image = this.state.productData.image;
         return (
             <Fragment>
+                <div className="mx-auto w-80" >
                 <div className="d-flex flex-wrap pt-5" >
-                    <div className="mx-auto" >
-                        <img src={image} className="details-main-image picture-shadow" alt="main-image" data-toggle="modal" data-target=".pictures-modal" />
-                        <div className="text-center mt-4 picture-shadow g-white float-right pl-4 pr-5 pt-2 details-text-div">
+                    <div className="mx-auto details-main-div" >
+                        <img src={image} className="details-main-image w-50 float-left picture-shadow" alt="main-image" data-toggle="modal" data-target=".pictures-modal" />
+                        <div className="text-center mt-4 picture-shadow g-white w-50 float-left pl-4 pr-5 pt-2 details-text-div">
                             <h3>{this.state.productData.name}</h3>
                             <p>{this.state.productData.description}</p>
                             <p>quantity: {this.state.productData.quantity}</p>
@@ -60,11 +61,12 @@ class Details extends Component {
                 <div className="d-flex flex-wrap mb-4" >
                     {this.state.pictureList.map((x, index) => {
                         return (
-                            <div key={index} className="m-2">
+                            <div key={index} className=" mx-auto mt-2">
                                 <img src={x.pic_url} className="details-images text-shadow" alt="other photo" data-toggle="modal" data-target=".pictures-modal" />
                             </div>
                         )
                     })}
+                </div>
                 </div>
 
 
@@ -75,7 +77,7 @@ class Details extends Component {
                         <div className="modal-content">
                             <h3>Picture Gallery</h3>
                             <div id="carouselControls" className="carousel slide m-2" data-ride="carousel">
-                                <div className="carousel-inner">
+                                <div className="carousel-inner carousel-inner-slide-show">
                                     <div className="carousel-item active">
                                         <img id="main-modal-image" className='d-block c-image mx-auto' src="" alt="main" />
                                     </div>
