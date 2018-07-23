@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { render } from 'react-dom';
+// import { Link } from 'react-router-dom';
+// import { render } from 'react-dom';
 import RentalsCatBar from './rentalsComps/rentalsCatBar';
-import Calender from './rentalsComps/rentalsCalender';
+// import Calender from './rentalsComps/rentalsCalender';
 
 
 export default class Rentals extends Component {
