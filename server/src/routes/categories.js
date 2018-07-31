@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 
 router.post('/reference_table', (req, res) => {
     console.log(req.body)
-    let sql = `INSERT INTO prod_cat_REF (prodID, catID)
+    let sql = `INSERT INTO prod_cat_ref (prodID, catID)
     VALUES (${req.body.prodID}, ${req.body.catID});`
     executeQuery(sql)
         .then((results) => {
