@@ -24,7 +24,7 @@ import UpdateGallery from './admin/adminUpdateGallery';
 import UpdateCarousel from './admin/adminUpdateCarousel';
 import UpdateParallax from './admin/adminUpdateParallax';
 import ChangeFeatured from './admin/adminChangeFeatured';
-import ChangeHomeText from './admin/adminchangehometext';
+import ChangeHomeText from './admin/adminChangeHomeText';
 
 import Venues from './venues';
 import Gallery from './gallery';
