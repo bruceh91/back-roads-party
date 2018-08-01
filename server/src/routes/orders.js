@@ -32,9 +32,9 @@ router.get('/category/:id', (req, res) => {
                     categories.category AS category,
                     products.id AS id
                 FROM categories
-	                JOIN prod_cat_REF ON prod_cat_REF.catID = categories.id
-	                JOIN products ON products.id = prod_cat_REF.prodID
-                WHERE prod_cat_REF.catID = ${req.params.id};`
+	                JOIN prod_cat_ref ON prod_cat_ref.catID = categories.id
+	                JOIN products ON products.id = prod_cat_ref.prodID
+                WHERE prod_cat_ref.catID = ${req.params.id};`
     executeQuery(sql)
         .then((results) => {
             res.json(results);

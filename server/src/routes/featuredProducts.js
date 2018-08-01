@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
         ORDER BY featured;`;
     executeQuery(sql)
         .then((data) => {
+            console.log(`process.en == ${process.env.DB_HOST}`)
             res.json(data);
         }).catch((err) => {
             console.log(err);
