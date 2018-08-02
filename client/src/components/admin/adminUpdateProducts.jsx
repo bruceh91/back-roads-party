@@ -40,6 +40,7 @@ class UpdateProducts extends Component {
         }
         destroy(`/api/products/${id}`, data);
         destroy(`/api/products/cat/${id}`, data);
+        window.location.reload();
     }
 
     render() {
