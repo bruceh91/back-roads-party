@@ -64,10 +64,6 @@
     background-color: #C0C0C0
 }
 
-.navBar-item {
-    /* z-index: 2; */
-}
-
 .navBar-logo-btn {
     width: 17%;
 }
@@ -101,6 +97,14 @@
 .nav-brand {
     z-index: -1;
 }
+/* 
+#navName {
+    z-index: 1;
+    float: right;
+    position: fixed;
+    width: 30%;
+    margin-left: 75%;
+} */
 
 
 /*                home screen                  */

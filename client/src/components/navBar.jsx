@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { render } from 'react-dom';
 import AuthButton from '../auth/authButton';
 
@@ -32,12 +33,12 @@ export default class NavBar extends Component {
                     </button>
                     <div className="collapse navbar-collapse navBar-item" id="navbarNavAltMarkup" >
                         <div className="navbar-nav">
-                            <a className={"nav-item nav-link text-dark ml-2" + (this.state.active == '' ? ' nav-active' : "")} href="/">Home</a>
-                            <a className={"nav-item nav-link text-dark ml-1" + (this.state.active == 'rentals' ? ' nav-active' : "")} href="/rentals">Rentals</a>
-                            <a className={"nav-item nav-link text-dark ml-1" + (this.state.active == 'venues' ? ' nav-active' : "")} href="/venues">Venues</a>
-                            <a className={"nav-item nav-link text-dark ml-1" + (this.state.active == 'gallery' ? ' nav-active' : "")} href="/gallery">Gallery</a>
-                            <a className={"nav-item nav-link text-dark ml-1" + (this.state.active == 'faq' ? ' nav-active' : "")} href="/faq">FAQ</a>
-                            <a className={"nav-item nav-link text-dark ml-1" + (this.state.active == 'contact' ? ' nav-active' : "")} href="/contact">Contact</a>
+                            <Link className={"nav-item nav-link text-dark ml-2" + (this.state.active == '' ? ' nav-active' : "")} to="/" >Home</Link>
+                            <Link className={"nav-item nav-link text-dark ml-1" + (this.state.active == 'rentals' ? ' nav-active' : "")} to="/rentals" >Rentals</Link>
+                            <Link className={"nav-item nav-link text-dark ml-1" + (this.state.active == 'venues' ? ' nav-active' : "")} to="/venues" >Venues</Link>
+                            <Link className={"nav-item nav-link text-dark ml-1" + (this.state.active == 'gallery' ? ' nav-active' : "")} to="/gallery" >Gallery</Link>
+                            <Link className={"nav-item nav-link text-dark ml-1" + (this.state.active == 'faq' ? ' nav-active' : "")} to="/faq" >FAQ</Link>
+                            <Link className={"nav-item nav-link text-dark ml-1" + (this.state.active == 'contact' ? ' nav-active' : "")} to="/contact" >Contact</Link>
                         </div>
                     </div>
                     <span className="navbar-text">Back Roads Party Co. </span>
