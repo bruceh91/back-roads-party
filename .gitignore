@@ -1,6 +1,5 @@
 node_modules
 client/dist
 server/lib
-server/src/config/db.js
 **/*/ENV_VAR
 ENV_VAR
