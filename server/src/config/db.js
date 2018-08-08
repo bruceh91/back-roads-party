@@ -1,10 +1,10 @@
 import mysql from 'mysql';
 
 let pool = mysql.createPool({
-    host: 'back-roads-party.cl1ugulbo94u.us-east-1.rds.amazonaws.com',
-    user: 'brp_admin',
-    password: 'lorach789',
-    database: 'back_roads_party'
+    host: ,
+    user: ,
+    password: ,
+    database: 
 });
 
 function executeQuery(sql, args = []) {
