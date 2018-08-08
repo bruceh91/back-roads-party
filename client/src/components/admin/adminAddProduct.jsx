@@ -174,12 +174,11 @@ class AdminAddProduct extends Component {
                     </div>
 
                     <div className="text-center" >
-                        <h1> add picture here</h1>
+                        <h1> add pictures here</h1>
                         <h4>main picture</h4>
                         <input id="photo-upload" type="file" />
-                        {/* <h4>other pictures</h4>
-                        <input id="other-photos" type="file" multiple="multiple" onChange={() => this.handleFiles(this.files)} /> */}    
-                        {/* fix this late ^^^^   add separate function to upload photos and call that from the add product photo */}
+                        <h4>other pictures</h4>
+                        <input id="other-photos" type="file" multiple="multiple" onChange={() => this.handleFiles(this.files)} />     {/* this next */}
                     </div>
 
                     <div className="text-center" >
