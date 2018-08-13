@@ -3,4 +3,4 @@ client/dist
 server/lib
 **/*/ENV_VAR
 ENV_VAR
-server/src/config/db.jsserver/src/config/db.js
+server/src/config/db.js
