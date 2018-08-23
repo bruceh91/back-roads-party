@@ -41,7 +41,7 @@ export default class Home extends Component {
             <Fragment>
                 <div id="para1" className="top-logo parallax" style={para1}>
                     <img className='top-logo-pic mt-2 mr-1' src="https://s3.us-east-2.amazonaws.com/back-roads-party/small_logo_trans.png" alt='logo' />
-                    <h4>weddings, tents, inflatables, and venue rentals </h4>
+                    <h4>weddings, tents, inflatables, and venue rentals blahhhhh</h4>
                 </div>
                 <div className='home-header-container w-100 align-items-center'>
                     <div className='home-header-car' >
