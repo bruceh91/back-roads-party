@@ -3,7 +3,7 @@
 ### TO-DO:
 - all styling
     + home page
-    + rentals
+    + ~~ rentals~~
     + faq
     + contact
 - Admin side
