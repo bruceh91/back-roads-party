@@ -20,6 +20,6 @@ app.use('/api', routes);
 app.use(stateRouting);
 
 let port = process.env.PORT || 80;
-app.listen(port, "0.0.0.0", () => {
+app.listen(port, () => {
     console.log(`Server listening on port ${port}`);
 });

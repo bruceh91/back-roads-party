@@ -1,0 +1,57 @@
+
+> in-class-db-api@1.0.0 start /www/back-roads-party
+> npm run build:client && npm run build:server && npm run start:server
+
+
+> in-class-db-api@1.0.0 build:client /www/back-roads-party
+> webpack
+
+Hash: 7e90167b40bdcfa9c122
+Version: webpack 3.12.0
+Time: 6492ms
+    Asset     Size  Chunks                    Chunk Names
+bundle.js  4.17 MB       0  [emitted]  [big]  main
+  [11] ./client/src/services/base.js 2.23 kB {0} [built]
+  [12] (webpack)/buildin/global.js 509 bytes {0} [built]
+  [25] ./client/src/services/user.js 2.02 kB {0} [built]
+  [63] ./client/src/utilities/indeterminateProgress.jsx 3.33 kB {0} [built]
+  [64] ./client/src/store/actions/actionIndex.js 418 bytes {0} [built]
+  [65] ./client/src/auth/authButton.jsx 840 bytes {0} [built]
+ [210] ./client/src/index.js 824 bytes {0} [built]
+ [250] ./client/src/auth/privateRoute.jsx 1.25 kB {0} [built]
+ [254] ./client/src/auth/login.jsx 7.65 kB {0} [built]
+ [264] (webpack)/buildin/harmony-module.js 596 bytes {0} [built]
+ [279] ./client/src/auth/logout.jsx 3.29 kB {0} [built]
+ [618] ./client/src/store/reducers/reducerIndex.js 787 bytes {0} [built]
+ [619] ./client/src/store/reducers/reducer-users.js 509 bytes {0} [built]
+ [620] ./client/src/store/reducers/reducer-active-user.js 374 bytes {0} [built]
+ [621] ./client/src/store/reducers/redCurrentUserID.js 421 bytes {0} [built]
+    + 607 hidden modules
+
+> in-class-db-api@1.0.0 build:server /www/back-roads-party
+> babel ./server/src -d ./server/lib
+
+server/src/config/db.js -> server/lib/config/db.js
+server/src/config/passport.js -> server/lib/config/passport.js
+server/src/index.js -> server/lib/index.js
+server/src/middleware/auth.mw.js -> server/lib/middleware/auth.mw.js
+server/src/middleware/routing.mw.js -> server/lib/middleware/routing.mw.js
+server/src/routes/auth.js -> server/lib/routes/auth.js
+server/src/routes/categories.js -> server/lib/routes/categories.js
+server/src/routes/classes.js -> server/lib/routes/classes.js
+server/src/routes/featuredProducts.js -> server/lib/routes/featuredProducts.js
+server/src/routes/index.js -> server/lib/routes/index.js
+server/src/routes/orders.js -> server/lib/routes/orders.js
+server/src/routes/people.js -> server/lib/routes/people.js
+server/src/routes/pictures.js -> server/lib/routes/pictures.js
+server/src/routes/products.js -> server/lib/routes/products.js
+server/src/routes/rules-faq.js -> server/lib/routes/rules-faq.js
+server/src/routes/users.js -> server/lib/routes/users.js
+server/src/table.js -> server/lib/table.js
+server/src/utils/security.js -> server/lib/utils/security.js
+server/src/utils/tokens.js -> server/lib/utils/tokens.js
+
+> in-class-db-api@1.0.0 start:server /www/back-roads-party
+> node server/lib/index.js
+
+Server listening on port 3000
